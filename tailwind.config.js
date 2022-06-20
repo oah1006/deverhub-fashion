@@ -8,7 +8,12 @@ module.exports = {
     "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'red-radial-gradient': 'radial-gradient(50% 50% at 50% 50%,#eb4432 0,hsla(0,0%,100%,0) 100%)',
+        'blue-radial-gradient': 'radial-gradient(50% 50% at 50% 50%,#22d3ee 0,hsla(0,0%,100%,0) 100%)'
+      }
+    },
   },
   plugins: [],
 }
