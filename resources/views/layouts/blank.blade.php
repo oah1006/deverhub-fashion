@@ -13,9 +13,12 @@
     />
 </head>
 <body>
-    @include('layouts.header-master')
+
+    @include('layouts.header-home')
+
 
     @yield('content')
+
 
     @includeWhen(isset($footer) ,'layouts.footer')
 
