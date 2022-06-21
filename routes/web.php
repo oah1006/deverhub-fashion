@@ -19,4 +19,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/auth')->name('auth.')->group(function() {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 });
