@@ -23,7 +23,7 @@
                         @enderror
                     </div>
                     <div>
-                        <input type="email" name="email" placeholder="Your email..." class="border-zinc-200 border-solid border w-full px-4 py-2 mt-2 rounded-lg">
+                        <input type="text" name="email" placeholder="Your email..." class="border-zinc-200 border-solid border w-full px-4 py-2 mt-2 rounded-lg">
                         @error('email')
                             <p class="text-red-600 font-medium">{{ $message }}</p>
                         @enderror
@@ -46,7 +46,8 @@
                         @enderror
                     </div>
                     <div class="mt-3">
-                        <input type="password" name="confirm_password" placeholder="Confirm Password..." class="border-zinc-200 border-solid border w-full px-4 py-2 mt-2 rounded-lg">
+                        {{-- Pa dat ten nhu v name_confirmation okk --}}
+                        <input type="password" name="password_confirmation" placeholder="Confirm Password..." class="border-zinc-200 border-solid border w-full px-4 py-2 mt-2 rounded-lg">
                     </div>
                     <div class="mt-6">
                         <button type="submit" class="w-full py-2 bg-zinc-800 rounded-lg text-white font-medium text-3xl">Create account</button>

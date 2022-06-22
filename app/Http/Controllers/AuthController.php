@@ -10,26 +10,27 @@ use App\Http\Requests\RegisterAccountRequest;
 
 class AuthController extends Controller
 {
-    public function showLogin() {
+    public function showLogin()
+    {
         $title = "Login Account";
         return view('auth/login', compact('title'));
     }
 
 
-    public function showRegister() {
+    public function showRegister()
+    {
         $title = "Register Account";
         return view('auth/register', compact('title'));
     }
 
-    public function createAccount(RegisterAccountRequest $request) {
+    public function createAccount(RegisterAccountRequest $request)
+    {
         $checkAccount = $request->validated();
         $checkAccount['password'] = Hash::make($checkAccount['password']);
 
         $user = User::create($checkAccount);
-        return 'success';
-        // Auth::login($user);
+        Auth::login($user);
 
-        // return redirect()->route('home');
-        
+        return redirect()->route('home');
     }
 }
