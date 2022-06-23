@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/auth')->name('auth.')->group(function() {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [AuthController::class, 'loginAccount'])->name('login-account');
     Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
     Route::post('/register', [AuthController::class, 'createAccount'])->name('create-account');
+    Route::get('/logout', [AuthController::class, 'logoutAccount'])->name('logout');
+});
+
+Route::prefix('/admin')->name('admin.')->group(function() {
+    Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
 });
