@@ -5,9 +5,11 @@
         </a>
         <ul class="lg:ml-auto flex gap-8 text-black">
             <li>
-                <a>Men</a>
+                <a href="{{ route('detail') }}">Men</a>
             </li>
-            <li>Women</li>
+            <li>
+                <a href="{{ route('detail') }}">Men</a>
+            </li>
             <li>about</li>
             <li>contact</li>
         </ul>
@@ -31,7 +33,7 @@
                         <a href="{{ route('auth.login') }}" class="bg-black px-4 py-2 text-white rounded-lg font-bold">Login</a>
                     </li>
                     <li>
-                        <a href="{{ route('auth.register') }}" class="text-white font-bold lg:block hidden">Register</a>
+                        <a href="{{ route('auth.register') }}" class="text-black font-bold lg:block hidden">Register</a>
                     </li>
                 @endguest
             </ul>
