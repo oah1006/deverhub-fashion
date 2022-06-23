@@ -13,6 +13,7 @@
 
     <div class="flex">
         @include('admin.layouts.sidebar')
+
         @yield('content')
     </div>
 

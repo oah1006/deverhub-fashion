@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="w-full bg-zinc-100 h-screen pt-10">
-        <div class="flex bg-white rounded-lg mx-44 gap-8 justify-center">
-            <div class="px-8 py-6">
+        <div class="flex bg-white rounded-lg lgmx-44 gap-8 justify-center">
+            <div class="lg:px-8 px-3 py-6">
                 <form action="{{ route('auth.create-account') }}" method="POST">
                     <p class="text-4xl font-semibold">{{ $title }}</p>
                     <p class="text-zinc-600 mt-2">Be part of the Deverhub of family!</p>

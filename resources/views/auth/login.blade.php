@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="w-full bg-zinc-100 h-screen pt-10">
-        <div class="flex bg-white rounded-lg mx-20 gap-8">
-            <div class="w-1/2 px-8 py-6">
+        <div class="flex lg:flex-row flex-col bg-white rounded-lg lg:mx-20 lg:gap-8">
+            <div class="lg:w-1/2 lg:px-8 px-3 py-6">
                 <form method="POST" action="{{ route('auth.login-account') }}">
                     <p class="text-4xl font-semibold">{{ $title }}</p>
                     <p class="text-zinc-600 mt-2">Please login with your email and password!</p>
@@ -33,7 +33,7 @@
                     @csrf
                 </form>
             </div>
-            <div class="w-1/2 bg-black px-8 py-6">
+            <div class="lg:w-1/2 lg:px-8 px-3 py-6 bg-black">
                 <p class="text-4xl font-semibold text-white">Create an account right here!</p>
                 <p class="text-white mt-3">You can get special services just for you like checking your purchase history and getting member coupons. Sign up for free today!</p>
                 <div class="mt-6">
