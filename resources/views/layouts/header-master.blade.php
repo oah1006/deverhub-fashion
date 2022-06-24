@@ -14,7 +14,7 @@
             <li>contact</li>
         </ul>
     </div>
-    <div class="flex list-none lg:px-20 py-3 border-t border-solid border-zinc-200">
+    <div class="flex list-none lg:px-20 px-3 py-3 border-t border-solid border-zinc-200">
             <ul class="flex lg:ml-auto items-center lg:gap-8 gap-4">
                 <li>
                     <input type="text" class="placeholder-gray-600 text-black px-4 py-1 rounded-md shadow-lg border-gray-300 border-solid border" placeholder="Search...">
