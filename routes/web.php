@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
 
 /*
@@ -18,7 +20,10 @@ use App\Http\Controllers\admin\DashboardController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/detail', [DetailController::class, 'showDetail'])->name('detail');
+Route::get('/catalog-detail', [DetailController::class, 'showDetail'])->name('catalog-detail');
+Route::get('/product-detail', [ProductDetailController::class, 'showDetail'])->name('product-detail');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+
 
 Route::prefix('/auth')->name('auth.')->group(function() {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

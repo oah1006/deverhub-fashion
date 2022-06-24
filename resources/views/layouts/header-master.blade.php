@@ -5,10 +5,10 @@
         </a>
         <ul class="lg:ml-auto flex gap-8 text-black">
             <li>
-                <a href="{{ route('detail') }}">Men</a>
+                <a href="{{ route('product-detail') }}">Men</a>
             </li>
             <li>
-                <a href="{{ route('detail') }}">Men</a>
+                <a href="{{ route('product-detail') }}">Men</a>
             </li>
             <li>about</li>
             <li>contact</li>
