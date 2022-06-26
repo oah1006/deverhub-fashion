@@ -15,8 +15,8 @@
         </ul>
     </div>
     <div class="flex list-none lg:px-20 py-3 border-t border-solid border-zinc-200">
-        <ul class="flex lg:ml-auto items-center lg:gap-8 gap-4">
-            <li class="ml-2">
+        <ul class="flex lg:ml-auto items-center lg:gap-8 gap-4 ml-2">
+            <li class="">
                 <input type="text" class="placeholder-gray-600 text-black px-4 py-1 rounded-md shadow-lg border-gray-300 border-solid border" placeholder="Search...">
             </li>
             @auth

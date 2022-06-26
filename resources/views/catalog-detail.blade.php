@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="lg:mx-20 mx-3 mt-3">
+    <div class="lg:mx-20 mx-2 mt-3">
         <p class=" text-zinc-600">Trang chủ / Nam</p>
         <div class="flex mt-8">
             <div>
@@ -51,14 +51,14 @@
             </div>
             <div class="grow grid lg:grid-cols-4 grid-cols-2 gap-3">
                 @for ($i = 0; $i < 8; $i++)
-                    <div>
+                    <a href="{{ route('product-detail') }}">
                         <img src="https://image.uniqlo.com/UQ/ST3/vn/imagesgoods/455933/item/vngoods_74_455933.jpg?width=1008&impolicy=quality_75" alt="">
                         <div class="my-3">
                             <p class="text-xl font-medium text-zinc-600">Nam</p>
                             <p class="mt-2 font-bold">AIRism Cotton Áo Thun Cổ Giả Dáng Rộng</p>
                             <p class="mt-2 text-xl text-red-600 font-bold">$20.000</p>
                         </div>
-                    </div>
+                    </a>
                 @endfor
             </div>
         </div>
