@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
@@ -26,7 +27,9 @@ Route::get('/product-detail', [ProductDetailController::class, 'showDetail'])->n
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
 
-
+Route::prefix('/profile')->name('profile.')->group(function() {
+    Route::get('/index', [ProfileController::class, 'showProfile'])->name('profile');
+});
 
 Route::prefix('/auth')->name('auth.')->group(function() {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -39,3 +42,4 @@ Route::prefix('/auth')->name('auth.')->group(function() {
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
 });
+

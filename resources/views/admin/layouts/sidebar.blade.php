@@ -1,4 +1,4 @@
-<div class="bg-gray-800 h-screen px-16 text-white text-xl">
+<div class="bg-gray-800 h-screen text-white text-xl w-1/5">
     <a href="" class="flex gap-4 items-center">
         <span class="material-icons-outlined">
             dashboard

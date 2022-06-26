@@ -38,6 +38,11 @@
                     <p class="my-3">Description:</p>
                     <p class="lg:block hidden">Thư giãn, đường cắt thoải mái. Một chiếc áo thun có cổ giả tạo phong cách riêng.</p>
                 </div>
+                <a
+                    href="{{ route('cart') }}"
+                    class="w-full text-center py-3 rounded bg-black text-white mt-4 inline-block"
+                    >Add to cart
+                </a>
             </div>
         </div>
 

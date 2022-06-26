@@ -47,7 +47,7 @@
                     <p class="ml-auto text-lg font-medium">$70.00</p>                 
                 </div>
                 <a
-                    href="#"
+                    href="{{ route('checkout') }}"
                     class="w-full text-center py-3 rounded bg-black text-white mt-4 inline-block"
                     >Check out
                 </a>
