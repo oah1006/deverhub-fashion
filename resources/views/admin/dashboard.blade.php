@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="bg-zinc-200 h-screen w-full grow">
+    <div class="bg-zinc-200 h-screen grow">
         xin chào
     </div>
 

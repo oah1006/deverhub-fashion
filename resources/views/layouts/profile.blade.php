@@ -12,7 +12,7 @@
                     <p class="text-sm text-zinc-600">bnhao10062001@gmail.com</p>
                 </div>
         
-                <div class="mt-8">.
+                <div class="mt-8">
                     <ul>
                         <li>
                             <a href="#">Profile</a>

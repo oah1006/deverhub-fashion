@@ -1,4 +1,4 @@
-@extends('layouts.master', ['footer' => true])
+@extends('layouts.profile', ['footer' => true])
 
 @section('title', $title)
 
