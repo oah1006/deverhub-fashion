@@ -28,9 +28,12 @@ Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
 
 Route::prefix('/profile')->name('profile.')->group(function() {
-    Route::get('/index', [ProfileController::class, 'showProfile'])->name('profile');
+    Route::get('/index', [ProfileController::class, 'showProfile'])->name('index');
     Route::get('/change-password', [ProfileController::class, 'showChangePassword'])->name('change-password');
-
+    Route::get('/delivery-address', [ProfileController::class, 'showDeliveryAddress'])->name('delivery-address');
+    Route::get('/edit-address', [ProfileController::class, 'showEditAddress'])->name('edit-address');
+    Route::get('/orders', [ProfileController::class, 'showOrders'])->name('orders');
+    Route::get('/order-detail', [ProfileController::class, 'showOrderDetail'])->name('order-detail');
 });
 
 Route::prefix('/auth')->name('auth.')->group(function() {

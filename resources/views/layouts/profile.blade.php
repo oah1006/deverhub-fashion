@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="lg:px-20 px-3 h-screen my-8">
+    <div class="lg:px-20 px-3 my-8 min-h-screen">
         <div class="flex lg:flex-row flex-col lg:gap-36 gap-10">
             <div>
                 <div>
@@ -15,16 +15,16 @@
                 <div class="lg:mt-8 mt-4 ">
                     <ul class="grid grid-cols-2 lg:grid-cols-none">
                         <li>
-                            <a href="#">Profile</a>
+                            <a href="{{ route('profile.index') }}">Profile</a>
                         </li>
                         <li>
-                            <a href="#">Change Password</a>
+                            <a href="{{ route('profile.change-password') }}">Change Password</a>
                         </li>
                         <li>
-                            <a href="#">Delivery Address</a>
+                            <a href="{{ route('profile.delivery-address') }}">Delivery Address</a>
                         </li>
                         <li>
-                            <a href="#">Order</a>
+                            <a href="{{ route('profile.orders') }}">Order</a>
                         </li>
                     </ul>
                 </div>

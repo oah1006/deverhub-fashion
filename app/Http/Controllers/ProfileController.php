@@ -21,4 +21,19 @@ class ProfileController extends Controller
         $title = "Delivery Address";
         return view('delivery-address', compact('title'));
     }
+
+    public function showEditAddress() {
+        $title = "Edit Address";
+        return view('edit-address', compact('title'));
+    }
+
+    public function showOrders() {
+        $title = "orders";
+        return view('orders', compact('title'));
+    }
+
+    public function showOrderDetail() {
+        $title = "Order Detail";
+        return view('order-detail', compact('title'));
+    }
 }
