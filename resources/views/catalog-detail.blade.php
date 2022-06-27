@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="lg:mx-20 mx-2 mt-3">
+    <div class="lg:mx-20 mx-2 my-10">
         <p class=" text-zinc-600">Trang chủ / Nam</p>
         <div class="flex mt-8">
             <div>

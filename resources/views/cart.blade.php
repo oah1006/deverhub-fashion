@@ -3,8 +3,7 @@
 @section('title', $title)
 
 @section('content')
-
-    <div class="lg:mx-20 mx-2">
+    <div class="lg:mx-20 mx-2 my-10">
         <p class="mt-8 text-3xl font-medium">CART</p>
         <div class="flex lg:flex-row flex-col lg:my-8 my-4 gap-10">
             <div class="border border-solid border-zinc-200 rounded-lg px-3 py-3 lg:w-2/3">

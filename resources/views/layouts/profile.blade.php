@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="lg:px-20 px-3 my-8 min-h-screen">
+    <div class="lg:mx-20 mx-2 my-10 min-h-screen">
         <div class="flex lg:flex-row flex-col lg:gap-36 gap-10">
             <div>
                 <div>

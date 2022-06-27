@@ -13,8 +13,6 @@
             <li>About</li>
             <li>Contact</li>
         </ul>
-    </div>
-    <div class="flex list-none lg:px-20 py-3 border-t border-solid border-zinc-200">
         <ul class="flex lg:ml-auto items-center lg:gap-8 gap-4 ml-2">
             <li class="">
                 <input type="text" class="placeholder-gray-600 text-black px-4 py-1 rounded-md shadow-lg border-gray-300 border-solid border" placeholder="Search...">
@@ -30,7 +28,7 @@
 
             @guest
                 <li>
-                    <a href="{{ route('auth.login') }}" class="bg-black px-4 py-2 text-white rounded-lg font-bold">Login</a>
+                    <a href="{{ route('auth.login') }}" class="bg-black px-4 py-1 text-white rounded-lg font-bold">Login</a>
                 </li>
                 <li>
                     <a href="{{ route('auth.register') }}" class="text-black font-bold lg:block hidden">Register</a>
@@ -38,4 +36,7 @@
             @endguest
         </ul>
     </div>
+    {{-- <div class="flex list-none lg:px-20 py-3 border-t border-solid border-zinc-200">
+        
+    </div> --}}
 </header>

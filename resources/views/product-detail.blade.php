@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-    <div class="lg:mx-20 mx-3 mt-3">
+    <div class="lg:mx-20 mx-2 my-10">
         <p class="text-zinc-600">Trang chủ / Nam / Áo/ Áo thun/ AIRism Cotton Áo Thun Cổ Giả Dáng Rộng</p>
         <div class="flex flex-col lg:flex-row gap-8 my-8">
             <div class="lg:w-3/5 flex flex-col lg:flex-row gap-4">

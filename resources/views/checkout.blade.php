@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <div class="lg:px-20 px-2">
+    <div class="lg:mx-20 mx-2 my-10">
         <p class="mt-8 text-3xl font-medium">CHECKOUT</p>
         <div class="flex lg:flex-row flex-col lg:my-8 my-4 gap-8">
             <form method="POST">

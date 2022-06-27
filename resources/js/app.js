@@ -1,5 +1,10 @@
 import './bootstrap';
+import Alpine from 'alpinejs'
+ 
+window.Alpine = Alpine
+ 
 
+import './store/menu.js';
 
 var swiper = new Swiper(".mySwiper", {
     direction: "vertical",
@@ -10,3 +15,5 @@ var swiper = new Swiper(".mySwiper", {
         clickable: true,
     },
 });
+
+Alpine.start()
