@@ -29,6 +29,8 @@ Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('chec
 
 Route::prefix('/profile')->name('profile.')->group(function() {
     Route::get('/index', [ProfileController::class, 'showProfile'])->name('profile');
+    Route::get('/change-password', [ProfileController::class, 'showChangePassword'])->name('change-password');
+
 });
 
 Route::prefix('/auth')->name('auth.')->group(function() {
@@ -41,5 +43,6 @@ Route::prefix('/auth')->name('auth.')->group(function() {
 
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
+    
 });
 
