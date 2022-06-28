@@ -6,7 +6,7 @@
     <div class="w-full bg-zinc-100 h-screen pt-10">
         <div class="flex bg-white rounded-lg lgmx-44 gap-8 justify-center">
             <div class="lg:px-8 px-3 py-6">
-                <form action="{{ route('auth.create-account') }}" method="POST">
+                <form action="" method="POST">
                     <p class="text-4xl font-semibold">{{ $title }}</p>
                     <p class="text-zinc-600 mt-2">Be part of the Deverhub of family!</p>
                     <div class="mt-6 flex items-center gap-2">
@@ -46,7 +46,6 @@
                         @enderror
                     </div>
                     <div class="mt-3">
-                        {{-- Pa dat ten nhu v name_confirmation okk --}}
                         <input type="password" name="password_confirmation" placeholder="Confirm Password..." class="border-zinc-200 border-solid border w-full px-4 py-2 mt-2 rounded-lg">
                     </div>
                     <div class="mt-6">

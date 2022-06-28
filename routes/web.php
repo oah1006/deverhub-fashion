@@ -8,10 +8,11 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\auth\LoginController as AdminLoginController;
 use App\Http\Controllers\auth\LoginController as CustomerLoginController;
+use App\Http\Controllers\admin\auth\LoginController as AdminLoginController;
 
 
 /*
@@ -40,11 +41,19 @@ Route::prefix('/profile')->name('profile.')->group(function() {
     Route::get('/order-detail', [ProfileController::class, 'showOrderDetail'])->name('order-detail');
 });
 
-Route::prefix('/auth')->name('auth.')->controller(CustomerLoginController::class)->group(function() {
-    Route::get('/login', 'showLoginForm')->name('login');
-    Route::post('login', 'store')->name('store');
-    Route::get('/logout', 'logout')->name('logout');
+Route::prefix('/auth')->name('auth.')->group(function() {
+    Route::name('login.')->controller(CustomerLoginController::class)->group(function() {
+        Route::get('/login', 'showLoginForm')->name('index');
+        Route::post('login', 'store')->name('store');
+        Route::get('/logout', 'logout')->name('logout');
+    });
+
+    Route::name('register.')->controller(RegisterController::class)->group(function() {
+        Route::get('/register', 'showRegisterForm')->name('index');
+        Route::post('/register', 'store')->name('store');
+    });
 });
+
 
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');

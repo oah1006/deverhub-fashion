@@ -20,7 +20,6 @@ class LoginController extends Controller
 
     public function credentials(Request $request) {
         $credentials = $request->only('email', 'password');
-        $credentials['role'] = 'customer';
 
         return $credentials;
     }

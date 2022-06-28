@@ -19,19 +19,19 @@
             </li>
             @auth
                 <li>
-                    <a href="{{ route('auth.login') }}" class="bg-red-500 px-4 py-2 text-white rounded-lg font-bold">{{ auth()->user()->first_name }}</a>
+                    <a href="{{ route('auth.login.index') }}" class="bg-red-500 px-4 py-2 text-white rounded-lg font-bold">{{ auth()->user()->first_name }}</a>
                 </li>
                 <li class="">
-                    <a href="{{ route('auth.logout') }}" class="font-bold">Logout</a>
+                    <a href="{{ route('auth.login.logout') }}" class="font-bold">Logout</a>
                 </li>
             @endauth
 
             @guest
                 <li>
-                    <a href="{{ route('auth.login') }}" class="bg-black px-4 py-1 text-white rounded-lg font-bold">Login</a>
+                    <a href="{{ route('auth.login.index') }}" class="bg-black px-4 py-1 text-white rounded-lg font-bold">Login</a>
                 </li>
                 <li>
-                    {{-- <a href="{{ route('auth.register') }}" class="text-black font-bold lg:block hidden">Register</a> --}}
+                    <a href="{{ route('auth.register.index') }}" class="text-black font-bold lg:block hidden">Register</a>
                 </li>
             @endguest
         </ul>
