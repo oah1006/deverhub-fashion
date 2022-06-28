@@ -1,4 +1,4 @@
-<div class="bg-gray-800 text-white text-xl w-1/5">
+<div class="bg-gray-800 text-white text-xl w-1/5 px-10 py-6">
     <a href="{{ route('admin.dashboard') }}" class="flex gap-4 items-center">
         <span class="material-icons-outlined">
             dashboard
