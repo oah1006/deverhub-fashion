@@ -13,12 +13,20 @@
             <li>About</li>
             <li>Contact</li>
         </ul>
-        <ul class="flex items-center gap-4">
-            <span class="material-icons-outlined" @click.self="toggleSearch" x-show="!openSearch" x-transition>
+        <ul class="flex items-center gap-4"  @click.outside="openSearch = false">
+            <span class="material-icons-outlined" @click.self="toggleSearch" x-show="!openSearch" x-transition x-cloak
+            >
                 search
             </span>
 
-            <input @click.self="toggleSearch" x-show="openSearch" x-transition type="text" class="placeholder-gray-600 text-black px-4 py-1 rounded-md shadow-lg border-gray-300 border-solid border" placeholder="Search...">
+            <input x-show="openSearch" x-cloak x-transition type="text" class="placeholder-gray-600 text-black px-4 py-1 rounded-md shadow-lg border-gray-300 border-solid border" placeholder="Search..."
+                x-transition:enter="transition ease-out duration-1000"
+                x-transition:enter-start="opacity-0 scale-90"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-1000"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-90"
+            >
             @auth
                 <li>
                     <a href="{{ route('auth.login') }}" class="bg-red-500 px-3 py-1 text-white rounded-lg font-bold">{{ auth()->user()->first_name }}</a>

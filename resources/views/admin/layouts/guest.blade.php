@@ -11,7 +11,7 @@
 <body>
     @include('admin.layouts.header')
 
-    <div class="flex">
+    <div class="flex min-h-screen">
         @include('admin.layouts.sidebar')
 
         @yield('content')

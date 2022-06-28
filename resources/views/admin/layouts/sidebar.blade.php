@@ -1,5 +1,5 @@
-<div class="bg-gray-800 h-screen text-white text-xl w-1/5">
-    <a href="" class="flex gap-4 items-center">
+<div class="bg-gray-800 text-white text-xl w-1/5">
+    <a href="{{ route('admin.dashboard') }}" class="flex gap-4 items-center">
         <span class="material-icons-outlined">
             dashboard
         </span>
@@ -17,7 +17,7 @@
         </span>
         <p>Receipt</p> 
     </a>
-    <a href="" class="flex gap-4 items-center mt-3">
+    <a href="{{ route('admin.users.index') }}" class="flex gap-4 items-center mt-3">
         <span class="material-icons-outlined">
             face
         </span>

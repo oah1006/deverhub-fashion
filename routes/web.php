@@ -48,8 +48,10 @@ Route::prefix('/auth')->name('auth.')->group(function() {
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
     
-    Route::name('users.')->controller(UsersController::class)->group(function() {
-        Route::get('/users', 'showUsers')->name('index');
+    Route::prefix('/users')->name('users.')->controller(UsersController::class)->group(function() {
+        Route::get('/index', 'showUsers')->name('index');
+        Route::get('/create', 'showCreate')->name('show-create-user');
+        Route::post('/create', 'create')->name('create-user');
     });
 });
 
