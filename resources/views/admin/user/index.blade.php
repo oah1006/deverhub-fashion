@@ -8,7 +8,7 @@
     <div class="bg-zinc-200 h-screen grow lg:px-10 lg:py-6">
         <div class="flex items-center">
             <p class="text-3xl">{{ $title }}</p>
-            <a href="{{ route('admin.users.show-create-user') }}" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Create a new</a>
+            <a href="{{ route('admin.users.create') }}" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Create a new</a>
         </div>
 
         @if (session('msg'))
@@ -25,6 +25,13 @@
                         <td class="lg:px-6 py-3">EMAIL</td>
                         <td class="lg:px-6 py-3">GENDER</td>
                         <td class="lg:px-6 py-3">ROLE</td>
+                        <td class="lg:px-6 py-3">
+                            <form action="{{ route('admin.users.destroy-all') }}" method="POST"> 
+                                @method('delete')
+                                <button onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.users.destroy-all') }}" class="text-red-600 font-bold hover:underline">Delete all</button>
+                                @csrf
+                            </form>
+                        </td>
                     </tr>
                 </thead>
 
@@ -37,18 +44,21 @@
                             <td class="lg:px-6 py-3">{{ $user->email }}</td>
                             <td class="lg:px-6 py-3">
                                 @if ($user->gender == 0)
-                                    {!! '<p>Nam</p>' !!}
+                                    {!! '<p>Male</p>' !!}
                                 @elseif ($user->gender == 1)
-                                    {!! '<p class="">Nữ</p>' !!}
+                                    {!! '<p class="">Female</p>' !!}
                                 @else
-                                    {!! '<p class="">Khác</p>' !!}
+                                    {!! '<p class="">Others</p>' !!}
                                 @endif
                             </td>
                             <td class="lg:px-6 py-3">
                                 {!! $user->role == 'admin' ?
-                                    '<p class="text-center font-medium py-0 bg-red-600 text-white rounded-lg">Admin</p>':
+                                    '<p class="text-center font-medium py-0 bg-green-600 text-white rounded-lg">Admin</p>':
                                     '<p class="text-center font-medium py-0 bg-blue-600 text-white rounded-lg">User</p>'
                                 !!}
+                            </td>
+                            <td class="lg:px-6 py-3 text-zinc-500 hover:underline">
+                                <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}">edit</a>
                             </td>
                         </tr>
                     @endforeach

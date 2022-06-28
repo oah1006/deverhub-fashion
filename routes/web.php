@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ use App\Http\Controllers\admin\DashboardController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/catalog-detail', [DetailController::class, 'showDetail'])->name('catalog-detail');
 Route::get('/product-detail', [ProductDetailController::class, 'showDetail'])->name('product-detail');
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
@@ -47,11 +48,16 @@ Route::prefix('/auth')->name('auth.')->group(function() {
 
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
+    Route::get('/login',[LoginController::class, 'showLoginForm'])->name('login');
     
     Route::prefix('/users')->name('users.')->controller(UsersController::class)->group(function() {
-        Route::get('/index', 'showUsers')->name('index');
-        Route::get('/create', 'showCreate')->name('show-create-user');
-        Route::post('/create', 'create')->name('create-user');
+        Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/edit/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'destroy')->name('destroy');
+        Route::delete('/delete', 'destroyAll')->name('destroy-all');
     });
 });
 
