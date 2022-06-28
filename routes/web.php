@@ -10,7 +10,9 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\auth\LoginController;
+use App\Http\Controllers\admin\auth\LoginController as AdminLoginController;
+use App\Http\Controllers\auth\LoginController as CustomerLoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,17 +40,15 @@ Route::prefix('/profile')->name('profile.')->group(function() {
     Route::get('/order-detail', [ProfileController::class, 'showOrderDetail'])->name('order-detail');
 });
 
-Route::prefix('/auth')->name('auth.')->group(function() {
-    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-    Route::post('/login', [AuthController::class, 'loginAccount'])->name('login-account');
-    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-    Route::post('/register', [AuthController::class, 'createAccount'])->name('create-account');
-    Route::get('/logout', [AuthController::class, 'logoutAccount'])->name('logout');
+Route::prefix('/auth')->name('auth.')->controller(CustomerLoginController::class)->group(function() {
+    Route::get('/login', 'showLoginForm')->name('login');
+    Route::post('login', 'store')->name('store');
+    Route::get('/logout', 'logout')->name('logout');
 });
 
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
-    Route::prefix('/auth')->name('auth.')->controller(LoginController::class)->group(function() {
+    Route::prefix('/auth')->name('auth.')->controller(AdminLoginController::class)->group(function() {
         Route::get('/login', 'showLoginForm')->name('login');
         Route::post('/login', 'store')->name('store');
         Route::get('/logout', 'logout')->name('logout');

@@ -41,7 +41,7 @@
                     <a href="{{ route('auth.login') }}" class="bg-black px-3 py-1 text-white rounded-lg font-medium">Login</a>
                 </li>
                 <li>
-                    <a href="{{ route('auth.register') }}" class="text-black font-medium lg:block hidden">Register</a>
+                    <a href="" class="text-black font-medium lg:block hidden">Register</a>
                 </li>
             @endguest
         </ul>
