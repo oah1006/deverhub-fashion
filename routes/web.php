@@ -48,7 +48,11 @@ Route::prefix('/auth')->name('auth.')->group(function() {
 
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
-    Route::get('/login',[LoginController::class, 'showLoginForm'])->name('login');
+    Route::prefix('/auth')->name('auth.')->controller(LoginController::class)->group(function() {
+        Route::get('/login', 'showLoginForm')->name('login');
+        Route::post('/login', 'store')->name('store');
+        Route::get('/logout', 'logout')->name('logout');
+    });
     
     Route::prefix('/users')->name('users.')->controller(UsersController::class)->group(function() {
         Route::get('/index', 'index')->name('index');

@@ -5,12 +5,12 @@
         </div>
         <div class="flex gap-8 items-center ml-auto mr-20">
             @auth
-                <a href="{{ route('auth.login') }}" class="bg-red-500 px-4 py-2 text-white rounded-lg font-bold">{{ auth()->user()->first_name }}</a>
-                <a href="{{ route('auth.logout') }}" class="font-bold">Logout</a>
+                <a href="" class="bg-red-500 px-4 py-2 text-white rounded-lg font-bold">{{ auth()->user()->first_name }}</a>
+                <a href="{{ route('admin.auth.logout') }}" class="font-bold">Logout</a>
             @endauth
 
             @guest
-                <a href="{{ route('auth.login') }}" class="bg-black px-4 py-2 text-white rounded-lg font-bold">Login</a>
+                <a href="{{ route('admin.auth.login') }}" class="bg-black px-4 py-2 text-white rounded-lg font-bold">Login</a>
             @endguest
         </div>
 
