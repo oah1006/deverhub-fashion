@@ -8,6 +8,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\CatalogController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
@@ -71,6 +72,12 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::post('/edit/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'destroy')->name('destroy');
         Route::delete('/delete', 'destroyAll')->name('destroy-all');
+    });
+
+    Route::prefix('/catalogs')->name('catalogs.')->controller(CatalogController::class)->group(function() {
+        Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
     });
 });
 

@@ -1,4 +1,4 @@
-@extends('admin.layouts.guest')
+@extends('admin.layouts.guest', ['sidebar' => true])
 
 @section('title', $title)
 

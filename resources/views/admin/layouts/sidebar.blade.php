@@ -23,4 +23,10 @@
         </span>
         <p>User</p> 
     </a>
+    <a href="{{ route('admin.catalogs.index') }}" class="flex gap-4 items-center mt-3">
+        <span class="material-icons-outlined">
+            category
+        </span>
+        <p>Category</p> 
+    </a>
 </div>

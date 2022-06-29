@@ -1,4 +1,4 @@
-@extends('admin.layouts.guest')
+@extends('admin.layouts.guest', ['sidebar' => true])
 
 @section('title', $title)
 
@@ -8,7 +8,7 @@
     <div class="bg-zinc-200 grow lg:px-10 lg:py-6">
         <div class="flex items-center">
             <p class="text-3xl">{{ $title }}</p>
-            <a href="{{ route('admin.users.create') }}" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Back</a>
+            <a href="{{ route('admin.users.index') }}" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Back</a>
         </div>
 
         <form method="POST" class="bg-white w-full mt-10 px-10 py-6 rounded-lg shadow-md">
