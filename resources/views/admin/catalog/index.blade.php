@@ -30,7 +30,6 @@
 
                 <tbody>
                     @foreach($catalogs as $catalog)
-
                         <tr>
                             <td class="lg:px-6 py-3">
                                 {{ $catalog->id }}
@@ -39,13 +38,12 @@
                                 {{ $catalog->title }}
                             </td>
                             <td class="lg:px-6 py-3">
-                                {{ $catalogOptions->$catalog->title }}
+                                {{ optional($catalog->parent)->title }}
                             </td>
                             <td class="lg:px-6 py-3 text-zinc-500 hover:underline">
                                 <a>edit</a>
                             </td>
                         </tr>
-
                     @endforeach
                 </tbody>
             </table>

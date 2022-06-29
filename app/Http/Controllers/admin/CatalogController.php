@@ -20,11 +20,9 @@ class CatalogController extends Controller
 
         $catalogs = Catalog::all();
 
-        $catalog = $catalogs->id;
-        dd($catalog);
 
         
-        // return view('admin.catalog.index', compact('title', 'catalogs'));
+        return view('admin.catalog.index', compact('title', 'catalogs'));
     }
 
     /**
@@ -35,7 +33,9 @@ class CatalogController extends Controller
     public function create()
     {
         $title = 'Create catalog';
-        $catalogs = Catalog::all();
+        $catalogs = Catalog::where('parent_id', null)->get();
+
+
 
 
 

@@ -24,8 +24,8 @@
                 <p>Parent_id</p>
                 <select name="parent_id" class="form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
                     <option value="" selected>Parent_id</option>
-                    @foreach($catalogs as $catalog)
-                        <option>{{ $catalog->id }}</option>
+                    @foreach ($catalogs as $catalog)
+                        <option value="{{ $catalog->id }}">{{ $catalog->id }}</option>
                     @endforeach
                 </select>
                 @error('parent_id')

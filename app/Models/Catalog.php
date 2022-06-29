@@ -13,4 +13,8 @@ class Catalog extends Model
         'title',
         'parent_id',
     ];
+
+    public function parent() {
+        return $this->belongsTo(Catalog::class, 'parent_id');
+    }
 }
