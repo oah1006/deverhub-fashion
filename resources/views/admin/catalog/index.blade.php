@@ -41,7 +41,7 @@
                                 {{ optional($catalog->parent)->title }}
                             </td>
                             <td class="lg:px-6 py-3 text-zinc-500 hover:underline">
-                                <a>edit</a>
+                                <a href="{{ route('admin.catalogs.edit', ['id' => $catalog->id]) }}">edit</a>
                             </td>
                         </tr>
                     @endforeach

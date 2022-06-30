@@ -33,13 +33,10 @@ class CatalogController extends Controller
     public function create()
     {
         $title = 'Create catalog';
-        $catalogs = Catalog::where('parent_id', null)->get();
+        $catalogOptions = Catalog::where('parent_id', null)->get();
 
 
-
-
-
-        return view('admin.catalog.create', compact('title', 'catalogs'));
+        return view('admin.catalog.create', compact('title', 'catalogOptions'));
     }
 
     /**
@@ -80,7 +77,12 @@ class CatalogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "Update catalog";
+        $catalog = Catalog::find($id);
+        $catalogOptions = Catalog::where('parent_id', null)->get();
+
+
+        return view('admin.catalog.edit', compact('title', 'catalog', 'catalogOptions'));
     }
 
     /**
