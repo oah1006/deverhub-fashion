@@ -6,6 +6,7 @@ use App\Models\Catalog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CatalogRequest;
+use App\Http\Requests\UpdateCatalogRequest;
 
 class CatalogController extends Controller
 {
@@ -49,7 +50,6 @@ class CatalogController extends Controller
     {
         $catalog = Catalog::create([
             'title' => $request->title,
-            'description' => $request->description,
             'parent_id' => $request->parent_id
         ]);
 
@@ -92,9 +92,15 @@ class CatalogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCatalogRequest $request, $id)
     {
-        //
+        $catalog = Catalog::find($id)->update([
+            'title' => $request->title,
+            'parent_id' => $request->parent_id
+        ]);
+
+        return back()->with('msg', 'Update catalog successfully!');
+
     }
 
     /**
