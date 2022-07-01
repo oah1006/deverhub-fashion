@@ -21,6 +21,8 @@ class UsersController extends Controller
         $title = 'List User';
         $users = User::all();
 
+
+
         return view('admin.user.index', compact('title', 'users'));
     }
 
@@ -64,8 +66,12 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $title = 'Detail user';
+        $user = User::find($id);
         
+
+        return view('admin.user.detail', compact('user', 'title'));
     }
 
     /**

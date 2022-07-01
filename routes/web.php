@@ -72,6 +72,7 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::post('/edit/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'destroy')->name('destroy');
         Route::delete('/delete', 'destroyAll')->name('destroy-all');
+        Route::get('/detail/{id}', 'show')->name('show');
     });
 
     Route::prefix('/catalogs')->name('catalogs.')->controller(CatalogController::class)->group(function() {

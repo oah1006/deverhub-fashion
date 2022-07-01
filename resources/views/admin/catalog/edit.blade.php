@@ -15,7 +15,10 @@
             <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
         @endif
         <form method="POST" action="{{ route('admin.catalogs.update', ['id' => $catalog->id]) }}" class="bg-white w-full mt-10 px-10 py-6 rounded-lg shadow-md">
-            <p class="text-3xl font-medium">{{ $title }}</p>
+            <div class="flex items-center">
+                <p class="text-3xl font-medium">{{$title}}</p>
+                <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.catalogs.destroy', ['id' => $catalog->id]) }}" class="bg-red-600 text-white font-medium rounded-lg py-1 px-4 ml-auto text-center">Delete</a>
+            </div>
             <div class="mt-4 mb-3">
                 <p>Title</p>
                 <input type="text" value="{{ $catalog->title }}"  name="title" placeholder="Title" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
