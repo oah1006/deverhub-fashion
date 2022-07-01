@@ -65,8 +65,12 @@ class CatalogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+        $title = 'Detail Catalog';
+        $catalog = Catalog::find($id);
+
+
+        return view('admin.catalog.detail', compact('title', 'catalog'));
     }
 
     /**
@@ -111,6 +115,10 @@ class CatalogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $catalog = Catalog::find($id);
+
+        $catalog->delete();
+
+        return redirect()->route('admin.catalogs.index')->with('msg', 'Delete catalog successfully!');
     }
 }

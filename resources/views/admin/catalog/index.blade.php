@@ -40,8 +40,22 @@
                             <td class="lg:px-6 py-3">
                                 {{ optional($catalog->parent)->title }}
                             </td>
-                            <td class="lg:px-6 py-3 text-zinc-500 hover:underline">
-                                <a href="{{ route('admin.catalogs.edit', ['id' => $catalog->id]) }}">edit</a>
+                            <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3">
+                                <a href="{{ route('admin.catalogs.show', ['id' => $catalog->id]) }}">
+                                    <span class="material-icons-outlined">
+                                        face
+                                    </span>
+                                </a>
+                                <a href="{{ route('admin.catalogs.edit', ['id' => $catalog->id]) }}">
+                                    <span class="material-icons-outlined">
+                                        edit
+                                    </span>
+                                </a>
+                                <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.catalogs.destroy', ['id' => $catalog->id]) }}">
+                                    <span class="material-icons-outlined">
+                                        delete
+                                    </span>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

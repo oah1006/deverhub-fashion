@@ -80,6 +80,8 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::post('/create', 'store')->name('store');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::get('/detail/{id}', 'show')->name('show');
     });
 });
 
