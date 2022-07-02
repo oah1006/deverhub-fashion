@@ -15,15 +15,29 @@ class CatalogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Catalog';
 
-        $catalogs = Catalog::all();
+        $catalogOptions = Catalog::where('parent_id', null)->get();
+        $catalogs = Catalog::query();
 
+        if ($request->filled('keywords')) {
+            $q = $request->keywords;
+            $catalogs->where(function ($query) use ($q) {
+                $query->where('title', 'like', '%'. $q . '%')
+                    ->orWhere('parent_id', 'like', '%'. $q . '%');
+            });
+        }
 
+        if ($request->filled('parent_id')) {
+            $parent_id = $request->parent_id;
+            $catalogs->where('parent_id', $parent_id);
+        }
+
+        $catalogs = $catalogs->get();
         
-        return view('admin.catalog.index', compact('title', 'catalogs'));
+        return view('admin.catalog.index', compact('title', 'catalogs', 'catalogOptions'));
     }
 
     /**
