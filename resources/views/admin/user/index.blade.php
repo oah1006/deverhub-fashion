@@ -23,19 +23,19 @@
                 </div>
                 <div class="w-[33.333%]">
                     <p class="text-base font-medium text-zinc-700">Search for roles</p>
-                    <select name="role" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2" value="{{ request()->role }}">
-                        <option>Role</option>
+                    <select name="role" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2">
+                        <option value="">Role</option>
                         <option value="admin" {{ request()->role == 'admin' ? 'selected' : false }}>Admin</option>
                         <option value="customer" {{ request()->role == 'customer' ? 'selected' : false }}>User</option>
                     </select>
                 </div>
                 <div class="w-[33.333%]">
                     <p class="text-base font-medium text-zinc-700">Search for genders</p>
-                    <select name="gender" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2" value="{{ request()->gender }}">
-                        <option>Gender</option>
-                        <option value="0" {{ request()->gender == 0 ? 'selected' : false }}>Male</option>
-                        <option value="1" {{ request()->gender == 1 ? 'selected' : false }}>Female</option>
-                        <option value="2" {{ request()->gender == 2 ? 'selected' : false }}>Others</option>
+                    <select name="gender" value="{{ request()->gender }}" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2">
+                        <option value="">Gender</option>
+                        <option value="0" {{ request()->gender === '0' ? 'selected' : false }}>Male</option>
+                        <option value="1" {{ request()->gender === '1' ? 'selected' : false }}>Female</option>
+                        <option value="2" {{ request()->gender === '2' ? 'selected' : false }}>Others</option>
                     </select>
                 </div>
             </div>
@@ -73,9 +73,9 @@
                             <td class="lg:px-6 py-3">{{ $user->last_name }}</td>
                             <td class="lg:px-6 py-3">{{ $user->email }}</td>
                             <td class="lg:px-6 py-3">
-                                @if ($user->gender == 0)
+                                @if ($user->gender === '0')
                                     {!! '<p>Male</p>' !!}
-                                @elseif ($user->gender == 1)
+                                @elseif ($user->gender === '1')
                                     {!! '<p class="">Female</p>' !!}
                                 @else
                                     {!! '<p class="">Others</p>' !!}
@@ -108,6 +108,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="my-3">
+            {{ $users->links() }}
         </div>
     </div>
 

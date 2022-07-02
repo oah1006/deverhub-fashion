@@ -16,12 +16,32 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request)
+    {   
         $title = 'List User';
-        $users = User::all();
+        $users = User::query();
 
+        if ($request->filled('keywords')) {
+            $q = $request->keywords;
+            $users->where(function($query) use ($q) {
+                $query->where('email', 'like', '%'. $q . '%')
+                    ->orWhere('first_name', 'like', '%'. $q . '%')
+                    ->orWhere('last_name', 'like', '%'. $q . '%');
+            });
+        }
 
+        if ($request->filled('role')) {
+            $role = $request->role;
+            $users->where('role', $role);
+        }
+
+        if ($request->filled('gender')) {
+            $gender = $request->gender;
+            $users->where('gender', $gender);
+        }
+
+        
+        $users = $users->paginate(3)->withQueryString();
 
         return view('admin.user.index', compact('title', 'users'));
     }
