@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\CatalogController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
@@ -83,6 +84,10 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
         Route::get('/detail/{id}', 'show')->name('show');
+    });
+
+    Route::prefix('/products')->name('products.')->controller(ProductController::class)->group(function() {
+        Route::get('/index', 'index')->name('index');
     });
 });
 

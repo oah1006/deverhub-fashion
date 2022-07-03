@@ -9,7 +9,7 @@
         <span class="material-icons-outlined">
             inventory_2
         </span>
-        <p>Inventory</p> 
+        <p>Product</p> 
     </a>
     <a href="" class="flex gap-4 items-center mt-3">
         <span class="material-icons-outlined">
