@@ -85,7 +85,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "Edit product";
+
+        $product = Product::find($id);
+        $catalogOptions = Catalog::where('parent_id', null)->get();
+
+
+        return view('admin.product.edit', compact('title', 'product'));
     }
 
     /**

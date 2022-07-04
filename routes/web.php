@@ -91,6 +91,7 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::get('/create', 'create')->name('create');
         Route::post('/create', 'store')->name('store');
         Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/edit/{id}', 'edit')->name('edit');
     });
 });
 

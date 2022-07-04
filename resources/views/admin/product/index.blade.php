@@ -83,7 +83,7 @@
                                     face
                                 </span>
                             </a>
-                            <a href="">
+                            <a href="{{ route('admin.products.edit', ['id' => $product->id]) }}">
                                 <span class="material-icons-outlined">
                                     edit
                                 </span>
