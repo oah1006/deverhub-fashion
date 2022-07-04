@@ -78,7 +78,7 @@
                             @endif
                         </td>
                         <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3">
-                            <a href="">
+                            <a href="{{ route('admin.products.show', ['id' => $product->id]) }}">
                                 <span class="material-icons-outlined">
                                     face
                                 </span>

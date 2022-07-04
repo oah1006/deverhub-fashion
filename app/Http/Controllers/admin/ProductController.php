@@ -70,7 +70,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $title = 'Detail product';
+
+        $product = Product::find($id);
+
+        return view('admin.product.detail', compact('title', 'product'));
     }
 
     /**
