@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Catalog;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -16,7 +18,9 @@ class ProductController extends Controller
     {
         $title = "List Product";
 
-        return view("admin.product.index", compact('title'));
+        $products = Product::all();
+
+        return view("admin.product.index", compact('title', 'products'));
     }
 
     /**
