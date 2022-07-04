@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\RegisterAccountRequest;
+use App\Http\Requests\Admin\RegisterAccountRequest;
 
 class RegisterController extends Controller
 {
