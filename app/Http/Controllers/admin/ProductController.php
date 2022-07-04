@@ -6,6 +6,7 @@ use App\Models\Catalog;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateProductRequest;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Create Product";
+
+        $products = Product::all();
+
+        $catalogOptions = Catalog::where('parent_id', null)->get();
+
+        return view('admin.product.create', compact('title', 'catalogOptions'));
     }
 
     /**
@@ -39,9 +46,20 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+        $product = Product::create([
+            'title' => $request->title,
+            'sku' => $request->sku,
+            'description' => $request->description,
+            'catalog_id' => $request->catalog_id,
+            'stock' => $request->stock,
+            'unit_price' => $request->unit_price,
+        ]);
+
+        $product->save();
+
+        return redirect()->route('admin.products.index')->with('msg', 'Add product successfully!');
     }
 
     /**
