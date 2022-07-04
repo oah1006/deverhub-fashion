@@ -8,8 +8,12 @@
 <div class="bg-zinc-200 h-screen grow lg:px-10 lg:py-6">
     <div class="flex items-center">
         <p class="text-3xl">{{ $title }}</p>
-        <a href="" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Create a new</a>
+        <a href="{{ route('admin.products.create') }}" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Create a new</a>
     </div>
+
+    @if (session('msg'))
+            <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
+    @endif
 
     <form action="" method="GET" class="my-10 py-5 bg-white px-6 rounded-lg">
         <div class="flex gap-6">
@@ -64,6 +68,14 @@
                             {{ $product->catalog->title }}
                         </td>
                         <td class="lg:px-6 py-3">
+                            {{ $product->unit_price }}
+                        </td>
+                        <td class="px-6 py-3">
+                            @if($product->stock == '0')
+                                {!! '<p class="text-center font-medium w-22 py-0 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
+                            @else
+                                {!! '<p class="text-center font-medium w-22 py-0 bg-blue-600 text-white rounded-md">Stocking</p>' !!}
+                            @endif
                         </td>
                         <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3">
                             <a href="">

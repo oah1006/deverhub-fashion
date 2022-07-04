@@ -88,6 +88,8 @@ Route::prefix('/admin')->name('admin.')->group(function() {
 
     Route::prefix('/products')->name('products.')->controller(ProductController::class)->group(function() {
         Route::get('/index', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
     });
 });
 
