@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateProductRequest;
+use App\Http\Requests\admin\UpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -91,7 +92,7 @@ class ProductController extends Controller
         $catalogOptions = Catalog::where('parent_id', null)->get();
 
 
-        return view('admin.product.edit', compact('title', 'product'));
+        return view('admin.product.edit', compact('title', 'product', 'catalogOptions'));
     }
 
     /**
@@ -101,9 +102,18 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        //
+        $product = Product::find($id)->update([
+            'title' => $request->title,
+            'sku' => $request->sku,
+            'description' => $request->description,
+            'catalog_id' => $request->catalog_id,
+            'stock' => $request->stock,
+            'unit_price' => $request->unit_price,
+        ]);
+
+        return back()->with('msg', 'Update user successfully!');
     }
 
     /**

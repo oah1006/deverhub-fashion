@@ -24,8 +24,8 @@
                 <p>Role</p>
                 <select name="role" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
                     <option selected>Role</option>
-                    <option value="admin" @selected($user->role== 'admin')>Admin</option>
-                    <option value="customer" @selected($user->role== 'customer')>User</option>
+                    <option value="admin" @selected($user->role == 'admin')>Admin</option>
+                    <option value="customer" @selected($user->role == 'customer')>User</option>
                 </select>
                 @error('role')
                     <span class="text-red-500 font-medium">{{ $message }}</span>
