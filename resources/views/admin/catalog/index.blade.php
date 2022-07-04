@@ -84,6 +84,10 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="my-3">
+            {{ $catalogs->links() }}
+        </div>
     </div>
 
 @endsection
