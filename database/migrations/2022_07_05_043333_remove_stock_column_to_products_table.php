@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->foreign('catalog_id')->references('id')->on('catalogs');
+            $table->dropColumn('stock');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['catalog_id']);
+            $table->unsignedBigInteger('stock')->default('0')->index();
         });
     }
 };
