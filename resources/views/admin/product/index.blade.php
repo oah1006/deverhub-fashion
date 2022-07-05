@@ -88,7 +88,7 @@
                                     edit
                                 </span>
                             </a>
-                            <a onclick="return confirm('Are you sure you want to delete this user?')" href="">
+                            <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.products.destroy', ['id' => $product->id]) }}">
                                 <span class="material-icons-outlined">
                                     delete
                                 </span>

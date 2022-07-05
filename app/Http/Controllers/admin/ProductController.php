@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Catalog;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\ProductVariants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateProductRequest;
 use App\Http\Requests\admin\UpdateProductRequest;
@@ -104,13 +105,19 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, $id)
     {
-        $product = Product::find($id)->update([
+        $productId = Product::find($id);
+        $product = $productId->update([
             'title' => $request->title,
             'sku' => $request->sku,
             'description' => $request->description,
             'catalog_id' => $request->catalog_id,
             'stock' => $request->stock,
             'unit_price' => $request->unit_price,
+        ]);
+
+        $productVariants = ProductVariants::find($productId)->insert([
+            'color' => $request->color,
+            'price' => $request->price,
         ]);
 
         return back()->with('msg', 'Update user successfully!');
@@ -124,6 +131,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+
+        $product->delete();
+
+        return redirect()->route('admin.products.index')->with('msg', 'Delete product successfully!');
     }
 }

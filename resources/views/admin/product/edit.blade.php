@@ -33,7 +33,7 @@
             </div>
             <div class="mt-4 mb-3">
                 <p>Description</p>
-                <textarea value="{{ $product->description }}" cols="80" rows="10" name="description" placeholder="Description" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"></textarea>
+                <textarea value="{{ $product->description }}" cols="80" rows="10" name="description" placeholder="Description" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">{{ old('description', $product->description) }}</textarea>
                 @error('description')
                     <span class="text-red-500 font-medium">{{ $message }}</span>
                 @enderror
@@ -64,9 +64,21 @@
                     <span class="text-red-500 font-medium">{{ $message }}</span>
                 @enderror
             </div>
+            <div class="mt-8 border-t border-solid border-zinc-300 pt-4">
+                <p class="text-3xl font-medium">Product Variants</p>
+            </div>
+            <div class="mt-4 mb-3">
+                <p>Color</p>
+                <input type="text" name="color" placeholder="Color" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
+            </div>
+            <div class="mt-4 mb-3">
+                <p>Size</p>
+                <input type="text" name="size" placeholder="Size" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
+            </div>
             <div class="mt-8">
                 <button type="text" class="w-full py-2 bg-zinc-800 rounded-lg text-white font-medium text-3xl">Submit</button>
             </div>
+            
             @csrf
         </form>
     </div>

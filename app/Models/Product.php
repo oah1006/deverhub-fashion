@@ -22,4 +22,8 @@ class Product extends Model
     public function catalog() {
         return $this->belongsTo(Catalog::class, 'catalog_id');
     }
+
+    public function productVariants() {
+        return $this->hasMany(ProductVariants::class, 'product_id');
+    }
 }

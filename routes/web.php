@@ -93,6 +93,7 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
 });
 
