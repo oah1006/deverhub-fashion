@@ -22,5 +22,6 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/app.js')}}"></script>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
 </body>
 </html>

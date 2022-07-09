@@ -8,7 +8,7 @@
 <div class="bg-zinc-200 h-screen grow lg:px-10 lg:py-6">
     <div class="flex items-center">
         <p class="text-3xl">{{ $title }}</p>
-        <a href="{{ route('admin.products.create') }}" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Create a new</a>
+        <a href="{{ route('admin.products.create') }}" class="px-4 py-1 bg-emerald-300 rounded-lg text-lg ml-auto">Create a new</a>
     </div>
 
     @if (session('msg'))
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="w-full flex items-center gap-3 my-4">
-            <button type="submit" class="px-2 py-2 bg-blue-500 rounded-md text-white inline-block">Search now</button>
+            <button type="submit" class="px-2 py-2 bg-emerald-300 rounded-md inline-block">Search now</button>
             <a class="px-2 py-2 rounded-md bg-slate-200">Reset Search</a>
         </div>
     </form>
@@ -74,7 +74,7 @@
                             @if($product->stock == '0')
                                 {!! '<p class="text-center font-medium w-22 py-0 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
                             @else
-                                {!! '<p class="text-center font-medium w-22 py-0 bg-blue-600 text-white rounded-md">Stocking</p>' !!}
+                                {!! '<p class="text-center font-medium w-22 py-0 bg-emerald-300 rounded-md">Stocking</p>' !!}
                             @endif
                         </td>
                         <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3">

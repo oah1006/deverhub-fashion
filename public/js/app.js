@@ -5093,6 +5093,22 @@ var swiper = new Swiper(".mySwiper", {
   }
 });
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
+$(document).ready(function () {
+  $('.tags-input').keypress(function (e) {
+    var key = e.which;
+
+    if (key == 13 || key == 44) {
+      e.preventDefault();
+      var tag = $(this).val();
+
+      if (tag.length > 0) {
+        $("<p class='px-1 py-1 bg-yellow-400 rounded-lg'>Yellow</p>").insertBefore(tag).fadeIn(100);
+        $(this).val("");
+        console.log('hi');
+      }
+    }
+  });
+});
 
 /***/ }),
 

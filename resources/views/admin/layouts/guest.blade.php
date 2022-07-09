@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Icons+Outlined" />
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
 </head>
 <body>
     @include('admin.layouts.header')
@@ -15,6 +17,10 @@
         @includeWhen(isset($sidebar) ,'admin.layouts.sidebar')
         @yield('content')
     </div>
+
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script scr="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>

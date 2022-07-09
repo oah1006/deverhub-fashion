@@ -12,11 +12,8 @@ class Product extends Model
 
     protected $fillable = [
         'title',
-        'sku',
         'description',
         'catalog_id',
-        'stock',
-        'unit_price'
     ];
 
     public function catalog() {

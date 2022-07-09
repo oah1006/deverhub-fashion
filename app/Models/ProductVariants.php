@@ -14,8 +14,8 @@ class ProductVariants extends Model
         'color',
         'unit_price',
         'size',
-        'created_at', 
-        'updated_at'
+        'stock',
+        'sku',
     ];
 
 
