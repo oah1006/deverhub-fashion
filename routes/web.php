@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\admin\UsersController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\CatalogController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\auth\RegisterController;
@@ -64,37 +64,12 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::post('/login', 'store')->name('store');
         Route::get('/logout', 'logout')->name('logout');
     });
+
+    Route::resource('users', UserController::class);
     
-    Route::prefix('/users')->name('users.')->controller(UsersController::class)->group(function() {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/create', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::post('/edit/{id}', 'update')->name('update');
-        Route::get('/delete/{id}', 'destroy')->name('destroy');
-        Route::delete('/delete', 'destroyAll')->name('destroy-all');
-        Route::get('/detail/{id}', 'show')->name('show');
-    });
+    Route::resource('catalogs', CatalogController::class);
 
-    Route::prefix('/catalogs')->name('catalogs.')->controller(CatalogController::class)->group(function() {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/create', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::get('/destroy/{id}', 'destroy')->name('destroy');
-        Route::get('/detail/{id}', 'show')->name('show');
-    });
-
-    Route::prefix('/products')->name('products.')->controller(ProductController::class)->group(function() {
-        Route::get('/index', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/create', 'store')->name('store');
-        Route::get('/show/{id}', 'show')->name('show');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::get('/destroy/{id}', 'destroy')->name('destroy');
-    });
+    Route::resource('products', ProductController::class);
 });
 
 

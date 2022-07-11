@@ -55,13 +55,7 @@
                         <td class="lg:px-6 py-3">EMAIL</td>
                         <td class="lg:px-6 py-3">GENDER</td>
                         <td class="lg:px-6 py-3">ROLE</td>
-                        <td class="lg:px-6 py-3">
-                            <form action="{{ route('admin.users.destroy-all') }}" method="POST"> 
-                                @method('delete')
-                                <button onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.users.destroy-all') }}" class="text-red-600 font-bold hover:underline">Delete all</button>
-                                @csrf
-                            </form>
-                        </td>
+                        <td></td>
                     </tr>
                 </thead>
 

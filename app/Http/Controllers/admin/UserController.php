@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateUserRequest;
 
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -142,11 +142,5 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')->with('msg', 'Delete Product successfully!');
-    }
-
-    public function destroyAll() {
-        User::truncate();
-
-        return back()->with('msg', 'Delete All successfully!');
     }
 }
