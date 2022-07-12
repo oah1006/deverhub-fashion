@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="bg-zinc-200 h-screen grow lg:px-10 lg:py-6">
+    <div class="h-screen grow lg:px-10 lg:py-6">
         <div class="flex items-center">
             <p class="text-3xl">{{ $title }}</p>
             <a href="{{ route('admin.users.create') }}" class="px-3 py-2 bg-blue-800 rounded-lg text-white text-lg ml-auto">Create a new</a>
@@ -82,17 +82,17 @@
                                 !!}
                             </td>
                             <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3">
-                                <a href="{{ route('admin.users.show', ['id' => $user->id]) }}">
+                                <a href="{{ route('admin.users.show', $user) }}">
                                     <span class="material-icons-outlined">
                                         face
                                     </span>
                                 </a>
-                                <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}">
+                                <a href="{{ route('admin.users.edit', $user) }}">
                                     <span class="material-icons-outlined">
                                         edit
                                     </span>
                                 </a>
-                                <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.users.destroy', ['id' => $user->id]) }}">
+                                <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.users.destroy', $user) }}">
                                     <span class="material-icons-outlined">
                                         delete
                                     </span>
