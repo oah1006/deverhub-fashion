@@ -1,10 +1,12 @@
-import './bootstrap';
+import '../bootstrap';
 import Alpine from 'alpinejs'
  
 window.Alpine = Alpine
  
 
-import './store/menu.js';
+import '../store/menu.js';
+
+
 
 var swiper = new Swiper(".mySwiper", {
     direction: "vertical",

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Icons+Outlined" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin/app.css') }}" rel="stylesheet">
 
 
 </head>
@@ -18,8 +18,9 @@
         @yield('content')
     </div>
 
+    <script src="{{ asset('js/admin/app.js')}}"></script>
     <script src="https://code.jquery.com/jquery.min.js"></script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
 
             $('.tags-input').keypress(function(e) {
@@ -42,7 +43,7 @@
             })
 
         })
-    </script>
+    </script> --}}
 
 </body>
 </html>
