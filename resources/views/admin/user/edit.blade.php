@@ -15,10 +15,10 @@
             <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
         @endif
 
-        <form action="{{ route('admin.users.update', ['id' => $user->id])  }}" method="POST" class="bg-white w-full mt-10 px-10 py-6 rounded-lg shadow-md">
+        <form action="{{ route('admin.users.update', $user)  }}" method="POST" class="bg-white w-full mt-10 px-10 py-6 rounded-lg shadow-md">
             <div class="flex items-center">
                 <p class="text-3xl font-medium">{{$title}}</p>
-                <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.users.destroy', ['id' => $user->id]) }}" class="bg-red-600 text-white font-medium rounded-lg py-1 px-4 ml-auto text-center">Delete</a>
+                <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.users.destroy', $user) }}" class="bg-red-600 text-white font-medium rounded-lg py-1 px-4 ml-auto text-center">Delete</a>
             </div>
             <div class="mt-4 mb-3">
                 <p>Role</p>

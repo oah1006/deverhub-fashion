@@ -28,28 +28,6 @@
                     New
                 </a>
             </div>
-            
-                {{-- <div class="w-[33.333%]">
-                    <p class="text-base font-medium text-zinc-700">Search for roles</p>
-                    <select name="role" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none">
-                        <option value="">Role</option>
-                        <option value="admin" {{ request()->role == 'admin' ? 'selected' : false }}>Admin</option>
-                        <option value="customer" {{ request()->role == 'customer' ? 'selected' : false }}>User</option>
-                    </select>
-                </div>
-                <div class="w-[33.333%]">
-                    <p class="text-base font-medium text-zinc-700">Search for genders</p>
-                    <select name="gender" value="{{ request()->gender }}" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2 focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none">
-                        <option value="">Gender</option>
-                        <option value="0" {{ request()->gender === '0' ? 'selected' : false }}>Male</option>
-                        <option value="1" {{ request()->gender === '1' ? 'selected' : false }}>Female</option>
-                        <option value="2" {{ request()->gender === '2' ? 'selected' : false }}>Others</option>
-                    </select>
-                </div> --}}
-            {{-- <div class="w-full flex items-center gap-3 my-4">
-                <button type="submit" class="rounded-md bg-blue-500 text-sm font-medium px-4 py-2 text-white inline-block hover:bg-blue-400 group shadow-sm">Search</button>
-                <a href="{{ route('admin.users.index') }}" class="rounded-md bg-zinc-300 text-zinc-600 text-sm font-medium px-4 py-2 shadow-sm gap-3 hover:bg-zinc-400 hover:font-medium group">Reset Search</a>
-                </div> --}}
         </form>
 
         <div class="relative shadow-md rounded-lg" x-data="{open : false}">
