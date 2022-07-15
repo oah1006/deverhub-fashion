@@ -6,14 +6,15 @@
 @section('content')
 
 <div class="bg-zinc-200 h-screen grow lg:px-10 lg:py-6">
-    <div class="flex items-center">
-        <p class="text-3xl">{{ $title }}</p>
-        <a href="{{ route('admin.products.create') }}" class="px-4 py-1 bg-emerald-300 rounded-lg text-lg ml-auto">Create a new</a>
-    </div>
+
+    <h2 class="text-4xl text-zinc-500 font-light">{{ $title }}</h2>
+
 
     @if (session('msg'))
             <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
     @endif
+
+    
 
     <form action="" method="GET" class="my-10 py-5 bg-white px-6 rounded-lg">
         <div class="flex gap-6">
