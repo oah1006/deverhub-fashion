@@ -6,10 +6,8 @@
 @section('content')
 
     <div class="grow lg:px-10 lg:py-6">
-        <div class="flex items-center">
-            <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
+        <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
 
-        </div>
 
         @if (session('msg'))
             <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
