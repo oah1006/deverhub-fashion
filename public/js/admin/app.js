@@ -22617,8 +22617,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
 
 
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
+window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"]; // 
+
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
+$(document).ready(function () {
+  var arrayColor = [];
+  $('.tags-input').keypress(function (e) {
+    var key = e.which;
+
+    if (key == 13 || key == 44) {
+      e.preventDefault();
+      var tag = $(this).val();
+
+      if (tag.length > 0) {
+        $('.tags').append("<span class='px-1 tag py-1 bg-yellow-400 rounded-lg'>" + tag + "</span>");
+        arrayColor.push(tag);
+        console.log(arrayColor);
+        $(this).val("");
+      }
+    }
+  });
+  $('.container-tags-input').on("click", function () {
+    $(this).parent("p").remove(100);
+  });
+});
 })();
 
 /******/ })()
