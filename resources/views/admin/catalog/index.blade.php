@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="bg-zinc-200 h-screen grow lg:px-10 lg:py-6">
+    <div class="h-screen grow lg:px-10 lg:py-6">
         <p class="text-3xl">{{ $title }}</p>
 
         @if (session('msg'))
