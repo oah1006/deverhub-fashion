@@ -41,18 +41,8 @@
                     @enderror
                 </div>
             </div>
-            <div class="bg-white w-full mt-10 px-10 py-6 rounded-lg shadow-md">
-                <div class="flex items-center">
-                    <p class="text-3xl font-medium">Version product</p>
-                    <a href="#" class="px-2 py-1 bg-emerald-300 ml-auto rounded-lg font-medium">Create version</a>
-                </div>
-            </div>
-            <div class="mt-8">
-                <button type="text" class="w-full py-2 bg-zinc-800 rounded-lg text-white font-medium text-3xl">Submit</button>
-            </div>
             @csrf
         </form>
-        <x-popup />
     </div>
 
 @endsection
