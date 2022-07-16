@@ -16,30 +16,95 @@
 
     
 
-    <form action="" method="GET" class="my-10 py-5 bg-white px-6 rounded-lg">
-        <div class="flex gap-6">
-            <div class="w-1/2">
-                <p class="text-base font-medium text-zinc-700">Search for keywords</p>
-                <input type="search" name="keywords" value="{{ request()->keywords }}" placeholder="Search" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2">
+    <form action="" method="GET" class="mt-4 my-10 rounded-lg">
+        <div class="flex items-center">
+            <div class="group relative w-1/2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 absolute left-3 top-2 text-slate-400 pointer-events-none group-focus-within:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="search" name="keywords" value="{{ request()->keywords }}" placeholder="Search" autocomplete="off" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none border border-zinc-300 w-full py-2 rounded-2xl pl-10 text-slate-900">
             </div>
-            <div class="w-1/2">
-                <p class="text-base font-medium text-zinc-700">Search for parent catalog</p>
-                <select name="parent_id" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-2">
-                    <option value="">Parent Catalog</option>
-                        <option></option>
-                </select>
-            </div>
-        </div>
-        <div class="w-full flex items-center gap-3 my-4">
-            <button type="submit" class="px-2 py-2 bg-emerald-300 rounded-md inline-block">Search now</button>
-            <a class="px-2 py-2 rounded-md bg-slate-200">Reset Search</a>
+            <a href="{{ route('admin.products.create') }}" class="ml-auto hover:bg-blue-400 group flex items-center rounded-md bg-blue-500 text-white text-sm font-medium px-4 py-2 shadow-sm gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+                New
+            </a>
         </div>
     </form>
 
-    <div class="relative overflow-x-auto shadow-md rounded-lg mt-10">
-        <table class="w-full text-sm text-left bg-white rounded-lg">
-            <thead class="font-medium text-gray-800 uppercase bg-zinc-300 rounded-lg">
-                <tr>
+    <div class="relative shadow-md rounded-lg" x-data="{open : false}">
+
+        {{-- Sort --}}
+        <div class="flex pr-12 bg-white py-3">
+            @if (request()->filled('role') || request()->filled('gender'))
+                <div class="flex gap-3 grow">
+                        @if (request()->input('role') == 'admin')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Role: </p>
+                                <p class="text-slate-500">Admin</p>
+                            </div>
+                        @elseif (request()->input('role')  == 'customer')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Role: </p>
+                                <p class="text-slate-500">User</p>
+                            </div>
+                        @endif
+                    
+
+                        @if (request()->input('gender') === '0')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Gender: </p>
+                                <p class="text-slate-500">Male</p>
+                            </div>
+                        @elseif (request()->input('gender') === '1')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Gender: </p>
+                                <p class="text-slate-500">Female</p>
+                            </div>
+                        @elseif (request()->input('gender') === '2')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Gender: </p>
+                                <p class="text-slate-500">Others</p>
+                            </div>
+                        @endif
+
+                        <a href="{{ route('admin.users.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
+                </div>
+            @endif
+            <div class="ml-auto">
+                <button class="flex items-center group" @click="open = ! open" x-cloak>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+                    </svg>
+                </button>
+            </div>
+            <form method="GET" class="bg-white border border-1 border-solid w-96 px-4 py-3 rounded-lg justify-end ml-auto mt-2 absolute left-0 right-10 top-10 z-50" x-show="open"  x-transition.origin.top.left>
+                <p class="text-base font-medium text-zinc-600">Search for roles</p>
+                <input type="radio" name="role" value="admin" @checked(request()->input('role') == 'admin')>
+                <label for="admin">Admin</label><br>
+                <input type="radio" name="role" value="customer" @checked(request()->input('role') == 'customer')>
+                <label for="customer">Customer</label><br>
+                <div class="mt-3">
+                    <p class="text-base font-medium text-zinc-600">Search for genders</p>
+                    <select name="gender" value="{{ request()->gender }}" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-1 focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none">
+                        <option value="">Gender</option>
+                        <option value="0" {{ request()->gender === '0' ? 'selected' : false }}>Male</option>
+                        <option value="1" {{ request()->gender === '1' ? 'selected' : false }}>Female</option>
+                        <option value="2" {{ request()->gender === '2' ? 'selected' : false }}>Others</option>
+                    </select>
+                </div>  
+                <button type="submit" class="mt-3 rounded-md bg-blue-500 text-sm font-medium w-full px-4 py-2 text-white inline-block hover:bg-blue-400 group shadow-sm">Search</button>
+            </form>
+        </div>
+        {{-- Sort --}}
+
+        <table class="w-full text-left bg-white rounded-lg">
+            <thead class="uppercase bg-slate-100 rounded-lg">
+                <tr class="text-xs text-zinc-600 font-bold">
                     <td class="lg:px-6 py-3">ID</td>
                     <td class="lg:px-6 py-3">TITLE</td>
                     <td class="lg:px-6 py-3">Catalog</td>
@@ -98,20 +163,58 @@
                 @endforeach
             </tbody>
         </table>
+
+        
     </div>
-        <div>
-            <div class="w-full h-full z-10 fixed inset-0 bg-black/25 flex items-center">
-                <div class="container-tags-input w-1/2 rounded-lg z-50 bg-white mx-auto px-6 py-3">
-                    <p class="text-xl font-medium">Variants Product</p>
-                    <div class="border border-solid border-zinc-400 mt-3 px-2 py-2 gap-4">
-                        <div class="tags w-full flex flex-wrap">
-                        </div>
-                        <input type="text" class="tags-input form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"  />
-                    </div>
+
+    {{-- <form method="POST">
+        <div class="w-full h-full z-10 fixed inset-0 bg-black/25 flex items-center">
+            <div class="container-tags-input w-1/2 rounded-lg z-50 bg-white mx-auto px-6 py-3">
+                <p class="text-xl font-medium">Variants Product</p>
+                <div class="mt-5">
+                    <p>Color</p>
+                    <input type="text" name="color" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4"/>
+                </div>
+                <div class="mt-2">
+                    <p>Size</p>
+                    <input type="text" name="size" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4"/>
+                </div>
+                <div class="relative shadow-md rounded-lg mt-8">
+                    <table class="w-full text-left bg-white rounded-lg">
+                        <thead class="uppercase bg-slate-100 rounded-lg">
+                            <tr class="text-xs text-zinc-600 font-bold">
+                                <td class="lg:px-6 py-3">Color</td>
+                                <td class="lg:px-6 py-3">Size</td>
+                                <td class="lg:px-6 py-3">Qty</td>
+                                <td class="lg:px-6 py-3">Price</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr class="text-gray-600">
+                                <td class="lg:px-6 py-3">Red</td>
+                                <td class="lg:px-6 py-3">S</td>
+                                <td class="lg:px-6 py-3">
+                                    <input type="text" name="size" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4"/>
+                                </td>
+                                <td class="lg:px-6 py-3"    > 
+                                    <input type="text" name="size" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>                  
+                </div>
+                <div class="flex mt-3">
+                    <button type="submit" class="ml-auto flex items-center gap-2 py-1 px-4 hover:bg-blue-400 bg-blue-500 rounded-lg text-white font-medium text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Submit
+                    </button>
                 </div>
             </div>
         </div>
-
+    </form> --}}
 
 
 @endsection
