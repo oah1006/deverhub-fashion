@@ -18,18 +18,18 @@ $(document).ready(function() {
                 var tag = $(this).val();
     
                 if (tag.length > 0) {
-                    $('.tags').append("<span class='px-1 tag py-1 bg-yellow-400 rounded-lg'>" + tag +  "</span>")
-                    arrayColor.push(tag);
+                    $('.tags').append("<div class='tag px-1 tag py-1 bg-yellow-400 rounded-lg flex'><svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg><p>Hello</p></div>")
+                    arrayColor.push(tag)
                     
                     console.log(arrayColor)
 
-                    $(this).val("");
+                    $(this).val("")
                 }
             }
         })
     
-        $('.container-tags-input').on("click", function() {
-            $(this).parent("p").remove(100)
+        $('.tags').on("click", function() {
+            $('.tag').remove();
         })
     
 })

@@ -46,11 +46,6 @@
                     <td class="lg:px-6 py-3">Price</td>
                     <td class="lg:px-6 py-3">Stock</td>
                     <td class="lg:px-6 py-3">
-                        <form  method="POST"> 
-                            @method('delete')
-                            <button onclick="return confirm('Are you sure you want to delete this user?')" href="" class="text-red-600 font-bold hover:underline">Delete all</button>
-                            @csrf
-                        </form>
                     </td>
                 </tr>
             </thead>
@@ -79,21 +74,24 @@
                             @endif
                         </td>
                         <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3">
-                            <a href="{{ route('admin.products.show', ['id' => $product->id]) }}">
-                                <span class="material-icons-outlined">
-                                    face
-                                </span>
-                            </a>
-                            <a href="{{ route('admin.products.edit', ['id' => $product->id]) }}">
-                                <span class="material-icons-outlined">
-                                    edit
-                                </span>
-                            </a>
-                            <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.products.destroy', ['id' => $product->id]) }}">
-                                <span class="material-icons-outlined">
-                                    delete
-                                </span>
-                            </a>
+                            <td class="lg:pl-6 py-3 text-zinc-500 hover:underline flex gap-3 ">
+                                <a href="{{ route('admin.products.show', $product) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </a>
+                                <a href="{{ route('admin.products.edit', $product) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </a>
+                                <a onclick="return confirm('Are you sure you want to delete this user?')" href="{{ route('admin.products.destroy', $product) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </a>
+                            </td>
                         </td>
                     </tr>
 
@@ -101,6 +99,19 @@
             </tbody>
         </table>
     </div>
+        <div>
+            <div class="w-full h-full z-10 fixed inset-0 bg-black/25 flex items-center">
+                <div class="container-tags-input w-1/2 rounded-lg z-50 bg-white mx-auto px-6 py-3">
+                    <p class="text-xl font-medium">Variants Product</p>
+                    <div class="border border-solid border-zinc-400 mt-3 px-2 py-2 gap-4">
+                        <div class="tags w-full flex flex-wrap">
+                        </div>
+                        <input type="text" class="tags-input form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"  />
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
 @endsection
