@@ -101,7 +101,6 @@ class CatalogController extends Controller
         $catalog = Catalog::find($id);
         $catalogOptions = Catalog::where('parent_id', null)->get();
 
-
         return view('admin.catalog.edit', compact('title', 'catalog', 'catalogOptions'));
     }
 
@@ -113,7 +112,7 @@ class CatalogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCatalogRequest $request, $id)
-    {
+    {   
         $catalog = Catalog::find($id)->update([
             'title' => $request->title,
             'parent_id' => $request->parent_id

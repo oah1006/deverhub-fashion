@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="bg-zinc-200 grow lg:px-10 lg:py-6">
+    <div class="grow lg:px-10 lg:py-6">
 
         <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
 
@@ -26,9 +26,9 @@
                 <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
                     <p class="w-1/12">Parent_id</p>
                     <select name="parent_id" class="form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
-                        <option value="" selected>Parent_id</option>
+                        <option value="">Parent_id</option>
                         @foreach ($catalogOptions as $option)
-                            <option value="{{ $option->id }}"  @selected($option->id)>{{ $option->id }}</option>
+                            <option value="{{ $option->id }}" @selected($option->id == $catalog->parent_id)>{{ $option->title }}</option>
                         @endforeach
                     </select>
                     @error('parent_id')
@@ -60,6 +60,7 @@
                     </button>
                 </div>
             </div>
+            @method('PUT')
             @csrf
         </form>
         

@@ -101,12 +101,8 @@
                     </button>
                 </div>
             </div>
-            @csrf
-
-            
-        </form>
-
-        
+            @csrf 
+        </form>    
     </div>
 
 @endsection
