@@ -49,17 +49,33 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreateProductRequest $request)
-    {
+    {   
+        dd($request->all());
         $product = Product::create([
             'title' => $request->title,
-            'sku' => $request->sku,
             'description' => $request->description,
             'catalog_id' => $request->catalog_id,
-            'stock' => $request->stock,
-            'unit_price' => $request->unit_price,
         ]);
 
+        foreach ($request->variant as $item) {
+            $productVariants = $product->productVariants()->create([
+                'sku' => $item['sku'],
+                'stock' => $item['stock'],
+                'unit_price' => $item['unit_price'],
+                'color' => $item['color'],
+                'size' => $item['size']
+            ]);
+    
+        }
+
+        
+        
+        
+
         $product->save();
+        $productVariants->save();
+
+        
 
         return redirect()->route('admin.products.index')->with('msg', 'Add product successfully!');
     }
@@ -137,5 +153,4 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products.index')->with('msg', 'Delete product successfully!');
     }
-
 }

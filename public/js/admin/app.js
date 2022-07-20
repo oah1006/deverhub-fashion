@@ -22615,10 +22615,50 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 
 
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"]; // 
 
+window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
+
+function handleData(data) {
+  if (data == '') {
+    return [];
+  } else {
+    return data.split(', ');
+  }
+}
+
+$('#auto-render').click(function () {
+  var color = $('#color').val();
+  var size = $('#size').val();
+  color = handleData(color);
+  size = handleData(size); // let productVariants = $.merge(color,size)
+  // console.log(productVariants)
+
+  var productVariants = [];
+
+  for (var i = 0; i < color.length; i++) {
+    for (var j = 0; j < size.length; j++) {
+      productVariants.push({
+        color: color[i],
+        size: size[j]
+      });
+    }
+  }
+
+  console.log(productVariants);
+
+  if (productVariants.length == 0) {
+    return;
+  }
+
+  $('#item-product-variants').html('');
+  productVariants.forEach(function (element, index) {
+    $('#item-product-variants').append("<tr class=\"text-gray-600\">\n        <td class=\"lg:px-6 py-3\">\n            <input readonly value=\"".concat(element.color, "\" name=\"variant[").concat(index, "][color]\"></input>\n        </td>\n        <td class=\"lg:px-6 py-3\">\n            <input readonly value=\"").concat(element.size, "\" name=\"variant[").concat(index, "][size]\"></input>\n        </td>\n        <td class=\"lg:px-6 py-3\"> \n            <input type=\"text\" name=\"variant[").concat(index, "][sku]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n        </td>\n        <td class=\"lg:px-6 py-3\">\n            <input type=\"text\" name=\"variant[").concat(index, "][stock]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n        </td>\n        <td class=\"lg:px-6 py-3\"> \n            <input type=\"text\" name=\"variant[").concat(index, "][unit_price]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n        </td>\n        \n    </tr>"));
+  });
+});
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 })();
 

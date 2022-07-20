@@ -25,11 +25,13 @@ class CreateProductRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:2', 'max:255', 'unique:products,title'],
-            'sku' => ['required', 'string', 'min:2', 'max:255', 'unique:products,sku'],
+            'sku' => ['nullable', 'string', 'min:2', 'max:255', 'unique:product_variants,sku'],
             'catalog_id' => ['nullable', 'exists:catalogs,id'],
             'description' => ['nullable', 'string', 'min:2', 'max:255'],
             'stock' => ['integer'],
-            'unit_price' => ['string', 'required']
+            'unit_price' => ['string', 'nullable'],
+            // 'color' => ['nullable', 'string', 'min:2', 'max:255'],
+            // 'size' => ['nullable', 'string']
         ];
     }
 }
