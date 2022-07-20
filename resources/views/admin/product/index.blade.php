@@ -108,8 +108,7 @@
                     <td class="lg:px-6 py-3">ID</td>
                     <td class="lg:px-6 py-3">TITLE</td>
                     <td class="lg:px-6 py-3">Catalog</td>
-                    <td class="lg:px-6 py-3">Price</td>
-                    <td class="lg:px-6 py-3">Stock</td>
+                    {{-- <td class="lg:px-6 py-3">Stock</td> --}}
                     <td class="lg:px-6 py-3">
                     </td>
                 </tr>
@@ -123,23 +122,20 @@
                             {{ $product->id }}
                         </td>
                         <td class="lg:px-6 py-3">
-                            {{ $product->title }}
+                            <a href="{{ route('admin.products.show', $product) }}" class="text-cyan-500">{{ $product->title }}</a>    
                         </td>
                         <td class="lg:px-6 py-3">
                             {{ $product->catalog->title }}
                         </td>
-                        <td class="lg:px-6 py-3">
-                            {{ $product->unit_price }}
-                        </td>
-                        <td class="px-6 py-3">
+                        {{-- <td class="px-6 py-3">
                             @foreach ($product->productVariants as $variant) 
-                                @if($variant['stock'] == 0)
+                                @if($variant['stock'] === 0)
                                     {!! '<p class="text-center font-medium w-22 py-0 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
                                 @else
                                     {!! '<p class="text-center font-medium w-22 py-0 bg-emerald-300 rounded-md">Stocking</p>' !!}
                                 @endif
                             @endforeach
-                        </td>3
+                        </td>  --}}
                         <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3 items-center">
                             <a href="{{ route('admin.products.show', $product) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -152,7 +148,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                 </svg>
                             </a>
-                            <form action="{{ route('admin.products.destroy', $product) }}" method="post">
+                            <form action="{{ route('admin.products.destroy', $product) }}" method="post"  class="flex items-center">
                                 <button onclick="return confirm('Are you sure you want to delete this product?')" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />

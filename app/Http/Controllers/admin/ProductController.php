@@ -57,6 +57,7 @@ class ProductController extends Controller
             'catalog_id' => $request->catalog_id,
         ]);
 
+
         foreach ($request->variant as $item) {
             $productVariants = $product->productVariants()->create([
                 'sku' => $item['sku'],
@@ -65,8 +66,10 @@ class ProductController extends Controller
                 'color' => $item['color'],
                 'size' => $item['size']
             ]);
-    
         }
+
+
+
 
 
         $product->save();
