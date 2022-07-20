@@ -16,8 +16,8 @@
             <div class="flex gap-4 border-b border-solid bg-blue-200 py-4 px-10">
                 <p class="text-zinc-700 text-xl font-bold">Information product</p>
                 <div class="flex gap-4 ml-auto">
-                    <a href="{{ route('admin.products.edit', ['id' => $product->id ]) }}" class="text-xl font-medium hover:underline">Edit</a>
-                    <a href="{{ route('admin.products.destroy', ['id' => $product->id]) }}" class="text-xl font-medium hover:underline text-red-500">Remove</a>
+                    <a href="{{ route('admin.products.edit', $product) }}" class="text-xl font-medium hover:underline">Edit</a>
+                    <a href="{{ route('admin.products.destroy', $product) }}" class="text-xl font-medium hover:underline text-red-500">Remove</a>
                 </div>
             </div>
             <div class="flex text-xl py-8 border-b border-solid border-zinc-300 px-10">

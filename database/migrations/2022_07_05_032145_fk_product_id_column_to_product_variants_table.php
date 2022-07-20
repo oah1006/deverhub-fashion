@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('product_variants', function (Blueprint $table) {
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
