@@ -37,7 +37,7 @@ class CatalogController extends Controller
             $catalogs->where('parent_id', $parent_id);
         }
 
-        $catalogs = $catalogs->paginate(3)->withQueryString();
+        $catalogs = $catalogs->paginate(6)->withQueryString();
         
         return view('admin.catalog.index', compact('title', 'catalogs', 'catalogOptions'));
     }
