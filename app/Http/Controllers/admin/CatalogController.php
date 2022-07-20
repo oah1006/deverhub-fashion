@@ -5,8 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Models\Catalog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CatalogRequest;
-use App\Http\Requests\UpdateCatalogRequest;
+use App\Http\Requests\Admin\CatalogRequest;
+use App\Http\Requests\Admin\UpdateCatalogRequest;
 
 
 

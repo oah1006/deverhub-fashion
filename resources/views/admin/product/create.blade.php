@@ -28,7 +28,7 @@
                     <p class="w-1/12">Parent_id</p>
                     <select name="catalog_id" class="form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
                         <option value="" selected>Catalog</option>
-                        @foreach($catalogOptions as $option)
+                        @foreach($catalogOptions as $option) 
                             <option value="{{ $option->id }}">{{ $option->title }}</option>
                         @endforeach
                     </select>

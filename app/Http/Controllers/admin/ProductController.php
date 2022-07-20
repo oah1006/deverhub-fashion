@@ -37,9 +37,9 @@ class ProductController extends Controller
 
         $products = Product::all();
 
-        $catalogOptions = Catalog::where('parent_id', null)->get();
+        $catalogOptions = Catalog::all();
 
-        return view('admin.product.create', compact('title', 'catalogOptions'));
+        return view('admin.product.create', compact('title', 'catalogOptions', 'products'));
     }
 
     /**
@@ -50,7 +50,7 @@ class ProductController extends Controller
      */
     public function store(CreateProductRequest $request)
     {   
-        dd($request->all());
+        
         $product = Product::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -68,9 +68,6 @@ class ProductController extends Controller
     
         }
 
-        
-        
-        
 
         $product->save();
         $productVariants->save();
