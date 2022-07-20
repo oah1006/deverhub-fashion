@@ -132,12 +132,14 @@
                             {{ $product->unit_price }}
                         </td>
                         <td class="px-6 py-3">
-                            @if($product->stock == '0')
-                                {!! '<p class="text-center font-medium w-22 py-0 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
-                            @else
-                                {!! '<p class="text-center font-medium w-22 py-0 bg-emerald-300 rounded-md">Stocking</p>' !!}
-                            @endif
-                        </td>
+                            @foreach ($product->productVariants as $variant) 
+                                @if($variant['stock'] == 0)
+                                    {!! '<p class="text-center font-medium w-22 py-0 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
+                                @else
+                                    {!! '<p class="text-center font-medium w-22 py-0 bg-emerald-300 rounded-md">Stocking</p>' !!}
+                                @endif
+                            @endforeach
+                        </td>3
                         <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3 items-center">
                             <a href="{{ route('admin.products.show', $product) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

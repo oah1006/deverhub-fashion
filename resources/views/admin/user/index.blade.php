@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="h-screen grow lg:px-10 lg:py-6">
+    <div class="min-h-screen grow lg:px-10 lg:py-6">
         <h2 class="text-4xl text-zinc-500 font-light">{{ $title }}</h2>
 
 
