@@ -51,7 +51,6 @@
                             </div>
                         @endif
                     
-
                         @if (request()->input('gender') === '0')
                             <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
                                 <p class="text-slate-500 font-semibold underline">Gender: </p>
@@ -127,11 +126,10 @@
                             {{ $product->catalog->title }}
                         </td>
                         <td class="px-6 py-3">
-
                             @if($sumStock == 0)
-                                {!! '<p class="text-center font-medium w-22 py-0 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
+                                {!! '<p class="inline-block text-center font-medium py-0 px-2 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
                             @else
-                                {!! '<p class="text-center font-medium w-22 py-0 bg-emerald-300 rounded-md">Stocking</p>' !!}
+                                {!! '<p class="inline-block text-center font-medium py-0 px-2 text-emerald-100 bg-emerald-300 rounded-md">Stocking</p>' !!}
                             @endif
 
                         </td> 

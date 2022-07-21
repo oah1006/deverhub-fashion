@@ -16,7 +16,7 @@
 
         <form method="POST" action="{{ route('admin.catalogs.update', $catalog) }}">
             <div class="bg-white w-full mt-5 rounded-lg shadow-md">
-                <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
+                <div class="flex items-center gap-4 border-b boder-gray-100 border-solid py-6">
                     <p class="w-1/12">Title</p>
                     <input type="text" value="{{ $catalog->title }}"  name="title" placeholder="Title" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
                     @error('title')

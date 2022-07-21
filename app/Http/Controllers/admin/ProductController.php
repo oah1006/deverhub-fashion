@@ -111,10 +111,11 @@ class ProductController extends Controller
         $title = "Edit product";
 
         $product = Product::find($id);
+        $productVariant = $product->productVariants()->where('product_id', $id)->get();
         $catalogOptions = Catalog::all();
 
 
-        return view('admin.product.edit', compact('title', 'product', 'catalogOptions'));
+        return view('admin.product.edit', compact('title', 'product', 'catalogOptions', 'productVariant'));
     }
 
     /**

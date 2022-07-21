@@ -22656,7 +22656,31 @@ $('#auto-render').click(function () {
 
   $('#item-product-variants').html('');
   productVariants.forEach(function (element, index) {
-    $('#item-product-variants').append("<tr class=\"text-gray-600\">\n        <td class=\"lg:px-6 py-3\">\n            <input readonly value=\"".concat(element.color, "\" name=\"variant[").concat(index, "][color]\"></input>\n        </td>\n        <td class=\"lg:px-6 py-3\">\n            <input readonly value=\"").concat(element.size, "\" name=\"variant[").concat(index, "][size]\"></input>\n        </td>\n        <td class=\"lg:px-6 py-3\"> \n            <input type=\"text\" name=\"variant[").concat(index, "][sku]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n        </td>\n        <td class=\"lg:px-6 py-3\">\n            <input type=\"text\" name=\"variant[").concat(index, "][stock]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n        </td>\n        <td class=\"lg:px-6 py-3\"> \n            <input type=\"text\" name=\"variant[").concat(index, "][unit_price]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n        </td>\n        \n    </tr>"));
+    $('#item-product-variants').append("<tr class=\"text-zinc-800\">\n            <td class=\"lg:px-6 py-3\">\n                <input readonly class=\"\" value=\"".concat(element.color, "\" name=\"variant[").concat(index, "][color]\"></input>\n            </td>\n            <td class=\"lg:px-6 py-3\">\n                <input readonly value=\"").concat(element.size, "\" name=\"variant[").concat(index, "][size]\"></input>\n            </td>\n            <td class=\"lg:px-6 py-3\"> \n                <input type=\"text\" name=\"variant[").concat(index, "][sku]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n            </td>\n            <td class=\"lg:px-6 py-3\">\n                <input type=\"text\" name=\"variant[").concat(index, "][stock]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n            </td>\n            <td class=\"lg:px-6 py-3\"> \n                <input type=\"text\" name=\"variant[").concat(index, "][unit_price]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n            </td>\n        </tr>"));
+  });
+});
+$('#add-item').click(function (e) {
+  var color = $('#color-item').val();
+  var size = $('#size-item').val();
+  color = handleData(color);
+  size = handleData(size);
+  var productVariants = []; // console.log(color);
+
+  for (var i = 0; i < color.length; i++) {
+    for (var j = 0; j < size.length; j++) {
+      productVariants.push({
+        'color': color[i],
+        'size': size[j]
+      });
+    }
+  }
+
+  if (productVariants.length == 0) {
+    return;
+  }
+
+  productVariants.forEach(function (element, index) {
+    $('#item-product-variants').append("<tr class=\"text-zinc-800\">\n            <td class=\"lg:px-6 py-3\">\n                <input readonly value=\"".concat(element.color, "\" name=\"variant[").concat(index, "][color]\">\n            </td>\n            <td class=\"lg:px-6 py-3\">\n                <input readonly value=\"").concat(element.size, "\" name=\"variant[").concat(index, "][size]\">\n            </td>\n            <td class=\"lg:px-6 py-3\"> \n                <input type=\"text\" name=\"variant[").concat(index, "][sku]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n            </td>\n            <td class=\"lg:px-6 py-3\">\n                <input type=\"text\" name=\"variant[").concat(index, "][stock]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n            </td>\n            <td class=\"lg:px-6 py-3\"> \n                <input type=\"text\" name=\"variant[").concat(index, "][unit_price]\" class=\"focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4\"/>\n            </td>\n        </tr>"));
   });
 });
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();

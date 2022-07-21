@@ -5,17 +5,16 @@
 
 @section('content')
 
-    <div class="grow lg:px-10 lg:py-6">
+    <div class="w-full grow lg:px-10 lg:py-6">
 
         <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
-
 
         @if (session('msg'))
             <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
         @endif
 
-        <form method="POST" action="{{ route('admin.products.update', $product) }}">
-            <div class="bg-white w-full mt-5 rounded-lg shadow-md">
+        <form method="POST" action="{{ route('admin.products.update', $product) }}" class="w-full">
+            <div class="bg-white w-full mt-5 rounded-lg ">
                 <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
                     <p class="w-1/12">Title</p>
                     <input type="text" name="title" value="{{ $product->title }}" placeholder="Title" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
@@ -46,20 +45,20 @@
                 <p class="text-xl font-medium px-10 pt-6">Variants Product</p>
                 <div class="mt-5 flex items-center gap-4 px-10 py-6">
                     <p class="w-1/12">Color</p>
-                    <input type="text" id="color" placeholder="Color" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"/>
+                    <input type="text" id="color-item" placeholder="Color" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"/>
                 </div>
-                <div class="mt-4 flex items-center gap-4 px-10 py-6">
+                <div class="mt-4 flex items-center gap-4 px-10 pb-6">
                     <p class="w-1/12">Size</p>
-                    <input type="text" id="size" placeholder="Size" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"/>
+                    <input type="text" id="size-item" placeholder="Size" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"/>
                 </div>
-                <button type="button" id="auto-render" class="mx-10 flex items-center gap-2 py-1 px-2 hover:bg-green-500 bg-green-400 rounded-lg text-white font-medium text-lg">
+                <button type="button" id="add-item" class="mx-10 flex items-center gap-2 py-1 px-2 hover:bg-green-500 bg-green-400 rounded-lg text-white font-medium text-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                     </svg>
-                    Auto rendering
+                    Add
                 </button>
     
-                <div class="relative shadow-md rounded-lg mt-8 px-10 py-6">
+                <div class="shadow-md rounded-lg mt-8 px-10">
                     <table class="w-full text-left bg-white rounded-lg">
                         <thead class="uppercase bg-slate-100 rounded-lg">
                             <tr class="text-xs text-zinc-600 font-bold">
@@ -72,7 +71,25 @@
                         </thead>
     
                         <tbody id="item-product-variants">
-                            
+                            @foreach($productVariant as $key => $variant)
+                                <tr>
+                                    <td class="lg:px-6 py-3">
+                                        <input value="{{ $variant->color }}" name="variant[{{ $key }}}][color]">
+                                    </td>
+                                    <td class="lg:px-6 py-3">
+                                        <input value="{{ $variant->size }}" name="variant[{{ $key }}}][size]">    
+                                    </td>
+                                    <td class="lg:px-6 py-3">
+                                        <input value="{{ $variant->sku }}" name="variant[{{ $key }}}][sku]">    
+                                    </td>
+                                    <td class="lg:px-6 py-3">
+                                        <input value="{{ $variant->stock }}" name="variant[{{ $key }}}][stock]">    
+                                    </td>
+                                    <td class="lg:px-6 py-3">
+                                        <input value="{{ $variant->unit_price }}" name="variant[{{ $key }}}][unit_price]">        
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>                  
                 </div>
