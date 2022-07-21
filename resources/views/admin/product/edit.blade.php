@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="bg-zinc-200 grow lg:px-10 lg:py-6">
+    <div class="grow lg:px-10 lg:py-6">
 
         <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
 
