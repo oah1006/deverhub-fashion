@@ -23,7 +23,10 @@ class ProductController extends Controller
 
         $products = Product::all();
 
-        return view("admin.product.index", compact('title', 'products'));
+        $sumStock = ProductVariants::all()->sum('stock');
+
+
+        return view("admin.product.index", compact('title', 'products', 'sumStock'));
     }
 
     /**
@@ -67,9 +70,6 @@ class ProductController extends Controller
                 'size' => $item['size']
             ]);
         }
-
-
-
 
 
         $product->save();
