@@ -92,7 +92,12 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
-        return view('admin.product.detail', compact('title', 'product'));
+        $sumStock = ProductVariants::where('product_id', $id)->sum('stock');
+        $sumPrice = ProductVariants::where('product_id', $id)->sum('unit_price');
+
+        $productVariant = $product->productVariants()->where('product_id', $id)->get();
+
+        return view('admin.product.detail', compact('title', 'product', 'sumStock', 'sumPrice', 'productVariant'));
     }
 
     /**

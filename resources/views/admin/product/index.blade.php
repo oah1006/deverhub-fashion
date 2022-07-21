@@ -116,7 +116,6 @@
 
             <tbody>
                 @foreach($products as $product)
-
                     <tr>
                         <td class="lg:px-6 py-3">
                             {{ $product->id }}
