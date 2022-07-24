@@ -24,12 +24,13 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'min:2', 'max:255', 'unique:products,title'],
-            'sku' => ['required', 'string', 'min:2', 'max:255', 'unique:products,sku'],
+            'title' => ['required', 'string', 'min:2', 'max:255', "unique:products,title,{$this->product}"],
+            'sku' => ['nullable', 'string', 'min:2', 'max:255', 'unique:products,sku'],
             'catalog_id' => ['nullable', 'exists:catalogs,id'],
+            'product_id' => ['nullable', 'exists:products,id'],
             'description' => ['nullable', 'string', 'min:2', 'max:255'],
             'stock' => ['integer'],
-            'unit_price' => ['string', 'required']
+            'unit_price' => ['string', 'nullable']
         ];
     }
 }

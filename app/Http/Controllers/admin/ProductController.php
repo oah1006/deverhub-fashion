@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Catalog;
 use App\Models\Product;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Models\ProductVariants;
 use App\Http\Controllers\Controller;
@@ -52,8 +53,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreateProductRequest $request)
-    {   
-        
+    {
+
         $product = Product::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -75,7 +76,7 @@ class ProductController extends Controller
         $product->save();
         $productVariants->save();
 
-        
+
 
         return redirect()->route('admin.products.index')->with('msg', 'Add product successfully!');
     }
@@ -127,20 +128,26 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, $id)
     {
-        $productId = Product::find($id);
-        $product = $productId->update([
+
+        $product = Product::find($id);
+
+        $product->update([
             'title' => $request->title,
-            'sku' => $request->sku,
             'description' => $request->description,
             'catalog_id' => $request->catalog_id,
-            'stock' => $request->stock,
-            'unit_price' => $request->unit_price,
         ]);
 
-        $productVariants = ProductVariants::find($productId)->insert([
-            'color' => $request->color,
-            'price' => $request->price,
-        ]);
+        // $variants = Arr::map($request->variants, function ($item) use ($product) {
+        //     $item['product_id'] = $product->id;
+        //     return $item;
+        // });
+
+        $product->productVariants()->upsert(
+            $request->variants,
+            ['sku'],
+            ['unit_price', 'size', 'color', 'stock']
+        );
+
 
         return back()->with('msg', 'Update user successfully!');
     }
@@ -152,7 +159,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   
+    {
         $product = Product::find($id);
 
         $product->delete();

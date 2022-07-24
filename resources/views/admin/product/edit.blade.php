@@ -6,15 +6,14 @@
 @section('content')
 
     <div class="w-full grow lg:px-10 lg:py-6">
-
         <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
 
         @if (session('msg'))
             <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
         @endif
 
-        <form method="POST" action="{{ route('admin.products.update', $product) }}" class="w-full">
-            <div class="bg-white w-full mt-5 rounded-lg ">
+        <form method="POST" action="{{ route('admin.products.update', $product) }}">
+            <div class="bg-white w-full mt-5 rounded-lg shadow-md">
                 <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
                     <p class="w-1/12">Title</p>
                     <input type="text" name="title" value="{{ $product->title }}" placeholder="Title" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
@@ -58,7 +57,7 @@
                     Add
                 </button>
     
-                <div class="shadow-md rounded-lg mt-8 px-10">
+                <div class="relative shadow-md rounded-lg mt-8 px-10 py-6">
                     <table class="w-full text-left bg-white rounded-lg">
                         <thead class="uppercase bg-slate-100 rounded-lg">
                             <tr class="text-xs text-zinc-600 font-bold">
@@ -72,24 +71,25 @@
     
                         <tbody id="item-product-variants">
                             @foreach($productVariant as $key => $variant)
-                                <tr>
+                                <tr class="variant text-zinc-800">
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->color }}" name="variant[{{ $key }}}][color]">
+                                        <input value="{{ $variant->color }}" name="variants[{{ $key }}][color]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->size }}" name="variant[{{ $key }}}][size]">    
+                                        <input value="{{ $variant->size }}" name="variants[{{ $key }}][size]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->sku }}" name="variant[{{ $key }}}][sku]">    
+                                        <input value="{{ $variant->sku }}" name="variants[{{ $key }}][sku]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->stock }}" name="variant[{{ $key }}}][stock]">    
+                                        <input value="{{ $variant->stock }}" name="variants[{{ $key }}][stock]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->unit_price }}" name="variant[{{ $key }}}][unit_price]">        
-                                    </td>
+                                        <input value="{{ $variant->unit_price }}" name="variants[{{ $key }}][unit_price]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />        
+                                    </td>    
                                 </tr>
                             @endforeach
+                            <input type="hidden" id="valueVariant" value="{{ $product->product_id }}" />
                         </tbody>
                     </table>                  
                 </div>
@@ -118,6 +118,7 @@
                     </button>
                 </div>
             </div>
+            @method('PUT')
             @csrf 
         </form>    
     </div>
