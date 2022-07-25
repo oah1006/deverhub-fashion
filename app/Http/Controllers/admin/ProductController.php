@@ -22,12 +22,9 @@ class ProductController extends Controller
     {
         $title = "List Product";
 
-        $products = Product::all();
-
-        $sumStock = ProductVariants::all()->sum('stock');
-
-
-        return view("admin.product.index", compact('title', 'products', 'sumStock'));
+        $products = Product::with('productVariants')->get();
+        
+        return view("admin.product.index", compact('title', 'products'));
     }
 
     /**
@@ -142,6 +139,7 @@ class ProductController extends Controller
         //     return $item;
         // });
 
+        $product->productVariants()->delete();
         $product->productVariants()->upsert(
             $request->variants,
             ['sku'],
@@ -165,5 +163,13 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('admin.products.index')->with('msg', 'Delete product successfully!');
+    }
+
+    public function destroyVariant($id) {
+        $variant = ProductVariants::find($id);
+
+        $variant->delete();
+
+        return back()->with('msg', 'Update user successfully!');
     }
 }

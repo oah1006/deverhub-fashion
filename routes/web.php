@@ -70,6 +70,10 @@ Route::prefix('/admin')->name('admin.')->group(function() {
     Route::resource('catalogs', CatalogController::class);
 
     Route::resource('products', ProductController::class);
+    Route::name('products.')->controller(ProductController::class)->group(function() {
+        Route::get('products/productVariant/{id}', 'destroyVariant')->name('destroyVariant');
+    });
+    
 });
 
 

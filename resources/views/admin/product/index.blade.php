@@ -126,7 +126,7 @@
                             {{ $product->catalog->title }}
                         </td>
                         <td class="px-6 py-3">
-                            @if($sumStock == 0)
+                            @if(! $product->productvariants->sum('stock'))
                                 {!! '<p class="inline-block text-center font-medium py-0 px-2 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
                             @else
                                 {!! '<p class="inline-block text-center font-medium py-0 px-2 text-emerald-100 bg-emerald-300 rounded-md">Stocking</p>' !!}
