@@ -73,23 +73,24 @@
                             @foreach($productVariant as $key => $variant)
                                 <tr class="variant text-zinc-800">
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->color }}" name="variants[{{ $key }}][color]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />
+                                        <input type="text" value="{{ $variant->color }}" name="variants[{{ $key }}][color]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->size }}" name="variants[{{ $key }}][size]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
+                                        <input type="text" value="{{ $variant->size }}" name="variants[{{ $key }}][size]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->sku }}" name="variants[{{ $key }}][sku]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
+                                        <input type="text" value="{{ $variant->sku }}" name="variants[{{ $key }}][sku]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->stock }}" name="variants[{{ $key }}][stock]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
+                                        <input type="number" value="{{ $variant->stock }}" name="variants[{{ $key }}][stock]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />    
                                     </td>
                                     <td class="lg:px-6 py-3">
-                                        <input value="{{ $variant->unit_price }}" name="variants[{{ $key }}][unit_price]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />        
+                                        <input type="number" value="{{ $variant->unit_price }}" name="variants[{{ $key }}][unit_price]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4" />        
                                     </td>    
+                                    <input type="hidden" value="{{ $variant->product_id }}"" name="variants[{{ $key }}][product_id]" />
                                 </tr>
                             @endforeach
-                            <input type="hidden" id="valueVariant" value="{{ $product->product_id }}" />
+                            <input type="hidden" id="valueVariant" value="{{ $variant->product_id }}" />
                         </tbody>
                     </table>                  
                 </div>

@@ -92,7 +92,7 @@ $('#add-item').click(function(e) {
         <td class="lg:px-6 py-3"> 
             <input type="text" name="variants[${variantCount}][unit_price]" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-0.5 px-4"/>
         </td>
-        $('#')
+        <input type="hidden" name="variants[${variantCount}][product_id]" value="${valueVariant}" />
     </tr>`)
 
 })
