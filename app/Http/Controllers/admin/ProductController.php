@@ -18,13 +18,34 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $title = "List Product";
 
-        $products = Product::with('productVariants')->get();
-        
-        return view("admin.product.index", compact('title', 'products'));
+        $products = Product::withCount(['productVariants' => function($query) {
+            $query->where('stock', );
+        }]);
+        $catalogs = Catalog::all();
+
+        if ($request->filled('keywords')) {
+            $q = $request->keywords;
+
+            $products->where(function($query) use($q) {
+                $query->where('title', 'like', '%'. $q . '%')
+                      ->orWhere('catalog_id', 'like', '%' . $q . '%');
+            });
+        }
+
+        if ($request->filled('stock')) {
+            $q = $request->stock;
+            $products->productVariants->where('stock', $q);
+        }
+
+        $products = $products->paginate(12)->withQueryString();
+
+
+
+        return view("admin.product.index", compact('title', 'products', 'catalogs'));
     }
 
     /**
@@ -140,11 +161,13 @@ class ProductController extends Controller
         // });
 
         $product->productVariants()->delete();
-        $product->productVariants()->upsert(
-            $request->variants,
-            ['sku'],
-            ['unit_price', 'size', 'color', 'stock']
-        );
+        if ($request->variants)  {
+            $product->productVariants()->upsert(
+                $request->variants,
+                ['sku'],
+                ['unit_price', 'size', 'color', 'stock']
+            );
+        }
 
 
         return back()->with('msg', 'Update user successfully!');

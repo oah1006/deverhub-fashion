@@ -42,7 +42,7 @@ class UserController extends Controller
         }
 
         
-        $users = $users->paginate(3)->withQueryString();
+        $users = $users->paginate(12)->withQueryString();
 
         return view('admin.user.index', compact('title', 'users'));
     }

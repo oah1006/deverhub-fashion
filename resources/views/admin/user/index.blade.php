@@ -117,9 +117,13 @@
                 <tbody>
                     @foreach($users as $user)
                         <tr class="text-gray-600">
-                            <td class="lg:px-6 py-3">{{ $user->id }}</td>
                             <td class="lg:px-6 py-3">
-                                <a href="{{ route('admin.users.show', $user) }}" class="text-cyan-500">{{ $user->first_name }}</a>    
+                                {{ $user->id }}
+                            </td>
+                            <td class="lg:px-6 py-3">
+                                <a href="{{ route('admin.users.show', $user) }}" class="text-cyan-500">
+                                    {{ $user->first_name }}
+                                </a>    
                             </td>
                             <td class="lg:px-6 py-3">
                                 <a href="{{ route('admin.users.show', $user) }}" class="text-cyan-500">{{ $user->last_name }}</a>    
@@ -136,7 +140,7 @@
                             </td>
                             <td class="lg:px-6 py-3">
                                 {!! $user->role == 'admin' ?
-                                    '<p class="text-center py-0 px-2 text-sm inline-block font-medium bg-green-200 text-green-800 rounded-lg">Admin</p>':
+                                    '<p class="text-center py-0 px-2 text-sm inline-block font-medium bg-red-200 text-red-800 rounded-lg">Admin</p>':
                                     '<p class="text-center py-0 px-2 text-sm inline-block font-medium bg-blue-200 text-blue-600 rounded-lg">User</p>'
                                 !!}
                             </td>

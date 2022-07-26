@@ -39,7 +39,7 @@
         <div class="flex pr-12 bg-white py-3">
             @if (request()->filled('role') || request()->filled('gender'))
                 <div class="flex gap-3 grow">
-                        @if (request()->input('role') == 'admin')
+                        @if (request()->input('stocking') == 'admin')
                             <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
                                 <p class="text-slate-500 font-semibold underline">Role: </p>
                                 <p class="text-slate-500">Admin</p>
@@ -50,23 +50,7 @@
                                 <p class="text-slate-500">User</p>
                             </div>
                         @endif
-                    
-                        @if (request()->input('gender') === '0')
-                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                <p class="text-slate-500 font-semibold underline">Gender: </p>
-                                <p class="text-slate-500">Male</p>
-                            </div>
-                        @elseif (request()->input('gender') === '1')
-                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                <p class="text-slate-500 font-semibold underline">Gender: </p>
-                                <p class="text-slate-500">Female</p>
-                            </div>
-                        @elseif (request()->input('gender') === '2')
-                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                <p class="text-slate-500 font-semibold underline">Gender: </p>
-                                <p class="text-slate-500">Others</p>
-                            </div>
-                        @endif
+
 
                         <a href="{{ route('admin.users.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
                 </div>
@@ -83,17 +67,17 @@
             </div>
             <form method="GET" class="bg-white border border-1 border-solid w-96 px-4 py-3 rounded-lg justify-end ml-auto mt-2 absolute left-0 right-10 top-10 z-50" x-show="open"  x-transition.origin.top.left>
                 <p class="text-base font-medium text-zinc-600">Search for roles</p>
-                <input type="radio" name="role" value="admin" @checked(request()->input('role') == 'admin')>
-                <label for="admin">Admin</label><br>
-                <input type="radio" name="role" value="customer" @checked(request()->input('role') == 'customer')>
-                <label for="customer">Customer</label><br>
+                <input type="radio" name="stock" value="admin" @checked(request()->input('stock') == request()->stock)>
+                <label for="admin">Stock</label><br>
+                <input type="radio" name="stock" value="customer" @checked(request()->input('stock') == 'stock')>
+                <label for="customer">Out Of Stock</label><br>
                 <div class="mt-3">
                     <p class="text-base font-medium text-zinc-600">Search for genders</p>
-                    <select name="gender" value="{{ request()->gender }}" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-1 focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none">
-                        <option value="">Gender</option>
-                        <option value="0" {{ request()->gender === '0' ? 'selected' : false }}>Male</option>
-                        <option value="1" {{ request()->gender === '1' ? 'selected' : false }}>Female</option>
-                        <option value="2" {{ request()->gender === '2' ? 'selected' : false }}>Others</option>
+                    <select name="catalog_id" value="{{ request()->catalog_id }}" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-1 focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none">
+                        <option value="">Catalog</option>
+                        @foreach($catalogs as $catalog)
+                            <option value="{{ $catalog->id }}" {{ request()->catalog_id == $catalog->id ? 'selected' : false }}>{{ $catalog->title }}</option>
+                        @endforeach
                     </select>
                 </div>  
                 <button type="submit" class="mt-3 rounded-md bg-blue-500 text-sm font-medium w-full px-4 py-2 text-white inline-block hover:bg-blue-400 group shadow-sm">Search</button>
@@ -126,7 +110,7 @@
                             {{ $product->catalog->title }}
                         </td>
                         <td class="px-6 py-3">
-                            @if(! $product->productvariants->sum('stock'))
+                            @if(! $product->productVariants->sum('stock'))
                                 {!! '<p class="inline-block text-center font-medium py-0 px-2 bg-zinc-400 text-white rounded-md">Out of stock</p>' !!}
                             @else
                                 {!! '<p class="inline-block text-center font-medium py-0 px-2 text-emerald-100 bg-emerald-300 rounded-md">Stocking</p>' !!}

@@ -50,7 +50,7 @@
                     <p class="w-1/12">Size</p>
                     <input type="text" id="size-item" placeholder="Size" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4"/>
                 </div>
-                <button type="button" id="add-item" class="mx-10 flex items-center gap-2 py-1 px-2 hover:bg-green-500 bg-green-400 rounded-lg text-white font-medium text-lg">
+                <button type="button" id="add-item" class="mx-10 flex items-center gap-2 py-1 px-2 hover:bg-teal-500 bg-teal-400 rounded-lg rounded-lg text-white font-medium text-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                     </svg>
