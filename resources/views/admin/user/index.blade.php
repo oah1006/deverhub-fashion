@@ -33,41 +33,45 @@
         <div class="relative shadow-md rounded-lg" x-data="{open : false}">
             {{-- Sort --}}
             <div class="flex pr-12 bg-white py-3">
-                @if (request()->filled('role') || request()->filled('gender'))
-                    <div class="flex gap-3 grow">
-                            @if (request()->input('role') == 'admin')
-                                <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                    <p class="text-slate-500 font-semibold underline">Role: </p>
-                                    <p class="text-slate-500">Admin</p>
-                                </div>
-                            @elseif (request()->input('role')  == 'customer')
-                                <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                    <p class="text-slate-500 font-semibold underline">Role: </p>
-                                    <p class="text-slate-500">User</p>
-                                </div>
-                            @endif
-                        
-
-                            @if (request()->input('gender') === '0')
-                                <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                    <p class="text-slate-500 font-semibold underline">Gender: </p>
-                                    <p class="text-slate-500">Male</p>
-                                </div>
-                            @elseif (request()->input('gender') === '1')
-                                <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                    <p class="text-slate-500 font-semibold underline">Gender: </p>
-                                    <p class="text-slate-500">Female</p>
-                                </div>
-                            @elseif (request()->input('gender') === '2')
-                                <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                    <p class="text-slate-500 font-semibold underline">Gender: </p>
-                                    <p class="text-slate-500">Others</p>
-                                </div>
-                            @endif
-
-                            <a href="{{ route('admin.users.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
-                    </div>
-                @endif
+                <div class="flex gap-3 grow">
+                    @if (request()->filled('role'))
+                        @if (request()->input('role') == 'admin')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Role: </p>
+                                <p class="text-slate-500">Admin</p>
+                            </div>
+                        @elseif (request()->input('role')  == 'customer')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Role: </p>
+                                <p class="text-slate-500">User</p>
+                            </div>
+                        @endif
+                    @endif
+                    
+                    @if (request()->filled('gender'))
+                        @if (request()->input('gender') === '0')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Gender: </p>
+                                <p class="text-slate-500">Male</p>
+                            </div>
+                        @elseif (request()->input('gender') === '1')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Gender: </p>
+                                <p class="text-slate-500">Female</p>
+                            </div>
+                        @elseif (request()->input('gender') === '2')
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Gender: </p>
+                                <p class="text-slate-500">Others</p>
+                            </div>
+                        @endif
+                    @endif       
+                    
+                    @if (request()->filled('gender') || request()->filled('role'))
+                        <a href="{{ route('admin.users.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
+                    @endif
+                </div>
+                    
                 <div class="ml-auto">
                     <button class="flex items-center group" @click="open = ! open" x-cloak>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
