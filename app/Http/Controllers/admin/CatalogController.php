@@ -32,9 +32,9 @@ class CatalogController extends Controller
             });
         }
 
-        if ($request->filled('parent_id')) {
-            $parent_id = $request->parent_id;
-            $catalogs->where('parent_id', $parent_id);
+        if ($request->filled('catalog_id')) {
+            $catalogId = $request->catalog_id;
+            $catalogs->where('parent_id', $catalogId);
         }
 
         $catalogs = $catalogs->paginate(12)->withQueryString();

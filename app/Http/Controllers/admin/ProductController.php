@@ -22,9 +22,30 @@ class ProductController extends Controller
     {
         $title = "List Product";
 
-        $products = Product::withCount(['productVariants' => function($query) {
-            $query->where('stock', );
-        }]);
+        $products = Product::query();
+
+        if ($request->filled('stock')) {
+
+            $stock = $request->stock;
+            if ($stock == 1) {
+                $products->whereHas('productVariants', function($query) {
+                    $query->where('stock', '>', 0);
+                });
+            } else {
+                $products->whereDoesntHave('productVariants', function($query) {
+                    $query->where('stock', '>', 0);
+                });
+            }
+        }
+
+        if ($request->filled('catalog_id')) {
+            $catalogId = $request->catalog_id;
+            $products->where('catalog_id', $catalogId);
+        }
+
+        $products = $products->get();
+
+
         $catalogs = Catalog::all();
 
         if ($request->filled('keywords')) {
@@ -36,12 +57,9 @@ class ProductController extends Controller
             });
         }
 
-        if ($request->filled('stock')) {
-            $q = $request->stock;
-            $products->productVariants->where('stock', $q);
-        }
 
-        $products = $products->paginate(12)->withQueryString();
+
+        // $products = $products->paginate(12)->withQueryString();
 
 
 

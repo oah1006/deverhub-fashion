@@ -37,24 +37,35 @@
 
         {{-- Sort --}}
         <div class="flex pr-12 bg-white py-3">
-            @if (request()->filled('role') || request()->filled('gender'))
-                <div class="flex gap-3 grow">
-                        @if (request()->input('stocking') == 'admin')
+            <div class="flex gap-3 grow">
+                @if (request()->filled('stock'))
+                        @if (request()->input('stock') == 1)
                             <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                <p class="text-slate-500 font-semibold underline">Role: </p>
-                                <p class="text-slate-500">Admin</p>
+                                <p class="text-slate-500 font-semibold underline">Stock: </p>
+                                <p class="text-slate-500">Stocking</p>
                             </div>
-                        @elseif (request()->input('role')  == 'customer')
+                        @elseif (request()->input('stock')  == 0)
                             <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
-                                <p class="text-slate-500 font-semibold underline">Role: </p>
-                                <p class="text-slate-500">User</p>
+                                <p class="text-slate-500 font-semibold underline">Stock: </p>
+                                <p class="text-slate-500">Out of stock</p>
+                            </div>
+                        @endif      
+                @endif
+                @if (request()->filled('catalog_id'))
+                    @foreach ($catalogs as $catalog)
+                        @if(request()->input('catalog_id') == $catalog->id)
+                            <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
+                                <p class="text-slate-500 font-semibold underline">Catalog: </p>
+                                <p class="text-slate-500">{{$catalog->title}}</p>
                             </div>
                         @endif
-
-
-                        <a href="{{ route('admin.users.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
-                </div>
-            @endif
+                    @endforeach
+                @endif
+                
+                @if (request()->filled('stock') || request()->filled('catalog_id')) 
+                    <a href="{{ route('admin.products.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
+                @endif
+            </div>
             <div class="ml-auto">
                 <button class="flex items-center group" @click="open = ! open" x-cloak>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -67,10 +78,10 @@
             </div>
             <form method="GET" class="bg-white border border-1 border-solid w-96 px-4 py-3 rounded-lg justify-end ml-auto mt-2 absolute left-0 right-10 top-10 z-50" x-show="open"  x-transition.origin.top.left>
                 <p class="text-base font-medium text-zinc-600">Search for roles</p>
-                <input type="radio" name="stock" value="admin" @checked(request()->input('stock') == request()->stock)>
-                <label for="admin">Stock</label><br>
-                <input type="radio" name="stock" value="customer" @checked(request()->input('stock') == 'stock')>
-                <label for="customer">Out Of Stock</label><br>
+                <input type="radio" name="stock" value="1" @checked(request()->input('stock') === 1)>
+                <label>Stock</label><br>
+                <input type="radio" name="stock" value="0" @checked(request()->input('stock') === 0)>
+                <label>Out Of Stock</label><br>
                 <div class="mt-3">
                     <p class="text-base font-medium text-zinc-600">Search for genders</p>
                     <select name="catalog_id" value="{{ request()->catalog_id }}" class="border border-zinc-300 w-full py-2 rounded-2xl px-4 mt-1 focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none">

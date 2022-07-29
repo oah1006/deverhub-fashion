@@ -30,8 +30,7 @@ class CreateProductRequest extends FormRequest
             'description' => ['nullable', 'string', 'min:2', 'max:255'],
             'stock' => ['integer'],
             'unit_price' => ['string', 'nullable'],
-            // 'color' => ['nullable', 'string', 'min:2', 'max:255'],
-            // 'size' => ['nullable', 'string']
+            'variant' => ['required']
         ];
     }
 }
