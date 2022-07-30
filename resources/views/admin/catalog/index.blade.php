@@ -12,6 +12,7 @@
             <div class="bg-blue-200 text-blue-800 w-full px-4 py-3 rounded-lg my-3">{{ session('msg') }}</div>
         @endif
 
+        {{-- Search --}}
         <form action="" method="GET" class="mt-4 my-10 rounded-lg">
             <div class="flex items-center">
                 <div class="group relative w-1/2">
@@ -28,23 +29,26 @@
                 </a>
             </div>
         </form>
+        {{-- End Search --}}
 
 
         <div class="relative overflow-x-auto shadow-md rounded-lg mt-10" x-data="{open : false}">
+            {{-- Sort --}}
             <div class="flex pr-12 bg-white py-3">
-                @if (request()->filled('parent_id'))
-                    <div class="flex gap-3 grow">
+                <div class="flex gap-3 grow">
+                    @if (request()->filled('parent_id'))
                         @foreach($catalogOptions as $option)
                             @if (request()->input('parent_id') == $option->id)
                                 <div class="text-sm flex items-center ml-2 py-0 px-2 bg-blue-50 rounded-lg gap-2 border text-slate-500 border-solid">
                                     <p class="text-slate-500 font-semibold underline">Catalog: </p>
-                                    <p class="text-slate-500">{{$option->title}}</p>
+                                    <p class="text-slate-500">{{ $option->title }}</p>
                                 </div>
                             @endif
                         @endforeach
-                            <a href="{{ route('admin.catalogs.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
-                    </div>
-                @endif
+                        <a href="{{ route('admin.catalogs.index') }}" class="mr-3 ml-auto text-white rounded-md hover:bg-blue-400 text-sm font-medium px-2 py-1 shadow-sm gap-3 bg-blue-500 hover:font-medium">Reset Search</a>
+                    @endif              
+                </div>
+
                 <div class="ml-auto">
                     <button class="flex items-center group" @click="open = ! open" x-cloak>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -68,6 +72,9 @@
                     <button type="submit" class="mt-3 rounded-md bg-blue-500 text-sm font-medium w-full px-4 py-2 text-white inline-block hover:bg-blue-400 group shadow-sm">Search</button>
                 </form>
             </div>
+            {{-- end sort --}}
+
+            {{-- List catalogs --}}
             <table class="w-full text-left bg-white rounded-lg">
                 <thead class="uppercase bg-slate-100 rounded-lg">
                     <tr class="text-xs text-zinc-600 font-bold">
@@ -117,6 +124,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{-- End list catalogs --}}
         </div>
 
         <div class="my-3">

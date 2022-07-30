@@ -23,7 +23,9 @@ class ProductController extends Controller
         $title = "List Product";
 
         $products = Product::query();
-
+        $catalogs = Catalog::all();
+        
+        // sort
         if ($request->filled('stock')) {
 
             $stock = $request->stock;
@@ -43,11 +45,7 @@ class ProductController extends Controller
             $products->where('catalog_id', $catalogId);
         }
 
-        $products = $products->get();
-
-
-        $catalogs = Catalog::all();
-
+        //search
         if ($request->filled('keywords')) {
             $q = $request->keywords;
 
@@ -59,7 +57,7 @@ class ProductController extends Controller
 
 
 
-        // $products = $products->paginate(12)->withQueryString();
+        $products = $products->paginate(12)->withQueryString();
 
 
 

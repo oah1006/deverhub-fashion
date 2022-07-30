@@ -8,6 +8,7 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\CatalogController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\auth\RegisterController;
@@ -73,6 +74,8 @@ Route::prefix('/admin')->name('admin.')->group(function() {
     Route::name('products.')->controller(ProductController::class)->group(function() {
         Route::get('products/productVariant/{id}', 'destroyVariant')->name('destroyVariant');
     });
+
+    Route::resource('orders', OrderController::class);
     
 });
 

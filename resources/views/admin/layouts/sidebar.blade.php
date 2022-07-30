@@ -17,7 +17,7 @@
             </span>
             <p>Product</p> 
         </a>
-        <a href="" class="flex gap-2 items-center px-12 mt-3">
+        <a href="{{ route('admin.orders.index') }}" class="flex gap-2 items-center px-12 mt-3">
             <span class="material-icons-outlined">
                 receipt
             </span>
