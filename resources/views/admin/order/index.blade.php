@@ -17,7 +17,7 @@
                 </svg>
                 <input type="search" name="keywords" placeholder="Search" autocomplete="off" class="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none border border-zinc-300 w-full py-2 rounded-2xl pl-10 text-slate-900">
             </div>
-            <a href="#" class="ml-auto hover:bg-blue-400 group flex items-center rounded-md bg-blue-500 text-white text-sm font-medium px-4 py-2 shadow-sm gap-3">
+            <a href="{{ route('admin.orders.create') }}" class="ml-auto hover:bg-blue-400 group flex items-center rounded-md bg-blue-500 text-white text-sm font-medium px-4 py-2 shadow-sm gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                 </svg>
@@ -66,6 +66,7 @@
             <thead class="uppercase bg-slate-100 rounded-lg">
                 <tr class="text-xs text-zinc-600 font-bold">
                     <td class="lg:px-6 py-3">ID</td>
+                    <td class="lg:px-6 py-3">Code</td>
                     <td class="lg:px-6 py-3">Customer</td>
                     <td class="lg:px-6 py-3">Status</td>
                     <td class="lg:px-6 py-3">total</td>
@@ -80,22 +81,25 @@
                         <td class="lg:px-6 py-3">
                             {{ $order->id }}
                         </td>
-                        <td class="lg:px-6 py-3">
+                        <td class="lg:px-6 py-3 "> 
+                            <p class="inline-block px-1 py-0.5 bg-red-200 text-red-700 underline rounded-lg text-sm">{{ $order->code }}</p>
+                        </td>
+                        <td class="lg:px-6 py-3 text-cyan-500">
                             {{ $order->user->email }}
                         </td>
                         <td class="lg:px-6 py-3">
                             @if ($order->status == 'pending')
-                                {!! '<p>Peding</p>' !!}
+                                {!! '<p class="inline-block px-1 py-0.5 bg-red-200 text-red-700 rounded-lg text-sm">Pending</p>' !!}
                             @elseif ($order->status == 'delivering')
-                                {!! '<p>Delivering</p>' !!} 
+                                {!! '<p class="inline-block px-1 py-0.5 bg-teal-200 text-teal-700 rounded-lg text-sm">Delivering</p>' !!} 
                             @elseif ($order->status == 'succeed')
-                                {!! '<p>Succeed</p>' !!} 
+                                {!! '<p class="inline-block px-1 py-0.5 bg-cyan-200 text-cyan-700 rounded-lg text-sm">Succeed</p>' !!} 
                             @elseif ($order->status == 'cancelled')
-                                {!! '<p>Cancelled</p>' !!} 
+                                {!! '<p class="inline-block px-1 py-0.5 bg-slate-200 text-slate-700 rounded-lg text-sm">Cancelled</p>' !!} 
                             @endif
                         </td>
                         <td class="px-6 py-3">
-                            
+                            {{ $order->total }}
                         </td> 
                         <td class="lg:px-6 py-3 text-zinc-500 hover:underline flex gap-3 items-center">
                             <a href="#">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,7 +30,11 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Create Order';
+
+        $userOptions = User::where('role', 'customer')->get();
+
+        return view('admin.order.create', compact('title', 'userOptions'));
     }
 
     /**
@@ -40,7 +45,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
