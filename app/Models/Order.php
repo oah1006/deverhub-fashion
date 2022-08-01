@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
@@ -27,6 +28,16 @@ class Order extends Model
 
     public function user() {
         return $this->belongsTo(User::class, 'customer_id');
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            do {
+                $code = 'DVH-' . strtoupper(Str::random(10));
+            } while (static::where('code', $code)->exists());
+            $model->code = $code;
+        });
     }
 
     
