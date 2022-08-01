@@ -8,14 +8,14 @@
 <div class="grow lg:px-10 lg:py-6">
     <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
 
-    <form method="POST" action="{{ route('admin.products.store') }}">
+    <form method="POST" action="{{ route('admin.orders.store') }}">
         <div class="bg-white w-full mt-5 rounded-lg shadow-md">
             <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
                 <p class="w-1/12">Customer</p>
                 <select name="customer_id" class="form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
                     <option value="" selected>Customer</option>
                     @foreach ($userOptions as $option)
-                        <option value="{{ $option->role }}">{{ $option->email }}</option>
+                        <option value="{{ $option->id }}">{{ $option->email }}</option>
                     @endforeach
                 </select>
                 @error('catalog_id')

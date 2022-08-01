@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateOrderRequest extends FormRequest
@@ -24,7 +25,9 @@ class CreateOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer_id' => ['nullable', ]
+            'customer_id' => ['nullable', Rule::exists('users', 'id')->where(function($query) {
+                return $query->where('role', 'customer');
+            })]
         ];
     }
 }
