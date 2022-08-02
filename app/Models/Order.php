@@ -30,6 +30,10 @@ class Order extends Model
         return $this->belongsTo(User::class, 'customer_id');
     }
 
+    public function items() {
+        return $this->hasMany(OrderItems::class, 'order_id');
+    }
+
     protected static function booted()
     {
         static::creating(function ($model) {
@@ -39,6 +43,21 @@ class Order extends Model
             $model->code = $code;
         });
     }
+
+    public function calculateBill() {
+        $this->sub_total = $this->items->sum(function($items) {
+            return $items['unit_price'] * $items['qty'];
+        });
+
+        $fees = collect([
+            $this->sub_total,
+            $this->shipping_fee
+        ]);
+
+        $this->total = $fees->sum();
+    } 
+
+
 
     
 }

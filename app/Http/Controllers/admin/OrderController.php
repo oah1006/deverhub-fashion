@@ -53,8 +53,9 @@ class OrderController extends Controller
             'email' => $user->email,
             'first_name' => $user->first_name,
             'last_name' => $user->last_name,
-            'gender' => $user->gender
+            'gender' => $user->gender,
         ]);
+
         
         // $order = $user->order()->create([
         //     'email' => $user->email,
