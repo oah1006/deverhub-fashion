@@ -49,11 +49,17 @@ class OrderController extends Controller
 
         $user = User::where('id', $request->customer_id)->first();
 
+
+
         $order = Order::create([
+            'customer_id' => $request->customer_id,
             'email' => $user->email,
             'first_name' => $user->first_name,
             'last_name' => $user->last_name,
             'gender' => $user->gender,
+            'total' => 0,
+            'sub_total' => 0,
+            'shipping_fee' => 0
         ]);
 
         
