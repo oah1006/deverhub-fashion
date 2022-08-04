@@ -73,7 +73,7 @@ class OrderController extends Controller
         // dump($order);
 
         $order->save();
-        return redirect()->route('admin.orders.index')->with('msg', 'Add orders successfully!');
+        return redirect()->route('admin.order.index')->with('msg', 'Add orders successfully!');
     }
 
     /**
@@ -84,7 +84,11 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $title = "Detail Order";
+        $order = Order::findOrFail($id);
+
+        return view('admin.order.detail', compact('title' ,'order'));
+
     }
 
     /**
@@ -95,7 +99,13 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "Edit Order";
+
+        $order = Order::find($id);
+
+        $user = User::where('id', $order->customer_id)->first();
+
+        return view('admin.order.edit', compact('title'));
     }
 
     /**

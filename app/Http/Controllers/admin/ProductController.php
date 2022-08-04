@@ -127,6 +127,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
 
+
         $sumStock = ProductVariants::where('product_id', $id)->sum('stock');
         $sumPrice = ProductVariants::where('product_id', $id)->sum('unit_price');
 
@@ -146,6 +147,7 @@ class ProductController extends Controller
         $title = "Edit product";
 
         $product = Product::find($id);
+
         $productVariant = $product->productVariants()->where('product_id', $id)->get();
         $catalogOptions = Catalog::all();
 

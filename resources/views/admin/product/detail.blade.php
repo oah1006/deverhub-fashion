@@ -52,14 +52,6 @@
                 <p class="w-1/3">Catalog</p>
                 <p class="grow">{{ $product->catalog->title }}</p>
             </div>
-            {{-- <div class="flex py-4 border-b border-solid border-gray-100 px-10">
-                <p class="w-1/3">Created_at</p>
-                <p class="grow">{{$product->created_at}}</p>
-            </div>
-            <div class="flex py-4 border-b border-solid border-gray-100 px-10">
-                <p class="w-1/3">Updated_at</p>
-                <p class="grow">{{ $product->updated_at }}</p>
-            </div> --}}
         </div>
         <div class="bg-white w-full rounded-lg mt-8 py-4" x-data="{open : false}">
             <p class="px-10 text-cyan-700 text-medium text-lg">Thông số sản phẩm</p>
