@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateOrderRequest;
+use App\Http\Requests\Admin\UpdateOrderRequest;
 
 class OrderController extends Controller
 {
@@ -103,9 +104,8 @@ class OrderController extends Controller
 
         $order = Order::find($id);
 
-        $user = User::where('id', $order->customer_id)->first();
+        return view('admin.order.edit', compact('title', 'order'));
 
-        return view('admin.order.edit', compact('title'));
     }
 
     /**
@@ -115,9 +115,23 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateOrderRequest $request, $id)
     {
-        //
+
+        $order = Order::find($id);
+
+        
+        dd($order);
+
+        $data = $request->validated();
+
+        $order->fill($data);
+        $order->calculateBill(['shipping_fee' => $data['shipping_fee']]);
+
+        $order->save();
+
+        
+        // return back()->with('msg', 'Update Order Successfully');
     }
 
     /**

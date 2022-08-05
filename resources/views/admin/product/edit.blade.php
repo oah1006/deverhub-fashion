@@ -15,21 +15,14 @@
         <form method="POST" action="{{ route('admin.products.update', $product) }}">
             <div class="bg-white w-full mt-5 rounded-lg shadow-md">
                 <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
-                    <p class="w-1/12"></p>
-                    <input type="text" name="" value="" placeholder="" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
+                    <p class="w-1/12">title</p>
+                    <input type="text" name="" value="{{ old('title') ?? $product->title }}" placeholder="" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
                     @error('')
                         <span class="text-red-500 font-medium">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
                     <p class="w-1/12">Description</p>
-                    <textarea value="" cols="80" rows="10" name="" placeholder="" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">{{ old('description', $product->description) }}</textarea>
-                    @error('')
-                        <span class="text-red-500 font-medium">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
-                    <p class="w-1/12"></p>
                     <textarea value="" cols="80" rows="10" name="" placeholder="" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">{{ old('description', $product->description) }}</textarea>
                     @error('')
                         <span class="text-red-500 font-medium">{{ $message }}</span>

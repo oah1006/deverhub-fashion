@@ -24,6 +24,7 @@ class Order extends Model
         'gender',
         'address',
         'phone_number',
+        'created_at'
     ];
 
     public function user() {
@@ -44,7 +45,8 @@ class Order extends Model
         });
     }
 
-    public function calculateBill() {
+    public function calculateBill($data = []) {
+        $this->shipping_fee = $data['shipping_fee'] ?? option('shipping_fee');
         $this->sub_total = $this->items->sum(function($items) {
             return $items['unit_price'] * $items['qty'];
         });

@@ -152,8 +152,8 @@ class ProductController extends Controller
         $catalogOptions = Catalog::all();
 
 
-        return view('admin.product.edit', compact('title', 'product', 'catalogOptions', 'productVariant'));
-    }
+        
+return view('admin.product.edit', compact('title', 'product', 'catalogOptions', 'productVariant'));    }
 
     /**
      * Update the specified resource in storage.
