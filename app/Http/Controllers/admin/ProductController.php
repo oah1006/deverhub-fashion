@@ -211,6 +211,6 @@ return view('admin.product.edit', compact('title', 'product', 'catalogOptions', 
 
         $variant->delete();
 
-        return back()->with('msg', 'Update user successfully!');
+        return back()->with('msg', 'Update product successfully!');
     }
 }
