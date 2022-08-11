@@ -6,6 +6,9 @@
 @section('content')
 
 <div class="grow lg:px-10 lg:py-6">
+    @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
 
     <p class="text-4xl text-zinc-500 font-light">{{ $title }}</p>
 
@@ -83,9 +86,9 @@
                 <p class="w-1/12">Gender</p>
                 <select name="gender" class="form-select w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
                     <option selected>Gender</option>
-                    <option value="0" @selected($order->gender == '0')>Male</option>
-                    <option value="1" @selected($order->gender == '1')>Female</option>
-                    <option value="2" @selected($order->gender == '2')>Others</option>
+                    <option value="male" @selected($order->gender == 'male')>Male</option>
+                    <option value="female" @selected($order->gender == 'female')>Female</option>
+                    <option value="other" @selected($order->gender == 'other')>Others</option>
                 </select>
             </div> 
 
@@ -108,7 +111,7 @@
 
         <div class="flex mt-4">
             <div class="flex items-center gap-3">
-                <a href="{{ route('admin.products.index') }}" class="font-medium text-lg inline-flex items-center rounded-md bg-white text-black px-4 py-2 shadow-lg hover:bg-zinc-50 gap-3">
+                <a href="{{ route('admin.orders.index') }}" class="font-medium text-lg inline-flex items-center rounded-md bg-white text-black px-4 py-2 shadow-lg hover:bg-zinc-50 gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                       </svg>

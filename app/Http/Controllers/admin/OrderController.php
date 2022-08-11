@@ -102,7 +102,7 @@ class OrderController extends Controller
     {
         $title = "Edit Order";
 
-        $order = Order::find($id);
+        $order = Order::findOrFail($id);
 
         return view('admin.order.edit', compact('title', 'order'));
 
@@ -118,12 +118,10 @@ class OrderController extends Controller
     public function update(UpdateOrderRequest $request, $id)
     {
 
-        $order = Order::find($id);
-
+        $order = Order::findOrFail($id);
         
-        dd($order);
-
         $data = $request->validated();
+
 
         $order->fill($data);
         $order->calculateBill(['shipping_fee' => $data['shipping_fee']]);
@@ -131,7 +129,7 @@ class OrderController extends Controller
         $order->save();
 
         
-        // return back()->with('msg', 'Update Order Successfully');
+        return back()->with('msg', 'Update Order Successfully');
     }
 
     /**

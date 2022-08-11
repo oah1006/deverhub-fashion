@@ -35,6 +35,7 @@ Route::get('/product-detail', [ProductDetailController::class, 'showDetail'])->n
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 Route::get('/checkout', [CheckoutController::class, 'showCheckout'])->name('checkout');
 
+
 Route::prefix('/profile')->name('profile.')->group(function() {
     Route::get('/index', [ProfileController::class, 'showProfile'])->name('index');
     Route::get('/change-password', [ProfileController::class, 'showChangePassword'])->name('change-password');
@@ -44,6 +45,7 @@ Route::prefix('/profile')->name('profile.')->group(function() {
     Route::get('/order-detail', [ProfileController::class, 'showOrderDetail'])->name('order-detail');
 });
 
+// AUTH LOGIN/REGISTER USER
 Route::prefix('/auth')->name('auth.')->group(function() {
     Route::name('login.')->controller(CustomerLoginController::class)->group(function() {
         Route::get('/login', 'showLoginForm')->name('index');
@@ -57,9 +59,11 @@ Route::prefix('/auth')->name('auth.')->group(function() {
     });
 });
 
-
+// ADMIN PAGE
 Route::prefix('/admin')->name('admin.')->group(function() {
     Route::get('/', [DashboardController::class, 'showDashboard'])->name('dashboard');
+
+    // ADMIN LOGIN/REGISTER
     Route::prefix('/auth')->name('auth.')->controller(AdminLoginController::class)->group(function() {
         Route::get('/login', 'showLoginForm')->name('login');
         Route::post('/login', 'store')->name('store');
