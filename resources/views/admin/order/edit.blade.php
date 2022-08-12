@@ -39,13 +39,6 @@
 
         <div class="bg-white w-full mt-5 rounded-lg shadow-md">
             <p class="px-10 py-4 text-rose-400 text-lg">PAYMENT SUMARY</p>
-            <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
-                <p class="w-1/12">Sub Total</p>
-                <input type="text" name="sub_total" value="{{ old('sub_total') ?? $order->sub_total }}" class="form-select mt-1 w-full text-gray-700 bg-white border border-solid border-zinc-300 rounded py-2 px-4">
-                @error('sub_total')
-                    <span class="text-red-500 font-medium">{{ $message }}</span>
-                @enderror
-            </div> 
 
             <div class="flex items-center gap-4 border-b boder-gray-100 border-solid px-10 py-6">
                 <p class="w-1/12">Shipping fee</p>

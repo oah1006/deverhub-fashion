@@ -24,5 +24,12 @@ class Product extends Model
         return $this->hasMany(ProductVariants::class, 'product_id');
     }
 
+    public function orderItems() {
+        return $this->hasMany(OrderItems::class, 'product_id');
+    }
 
+    public function productVariantsOrderItems() {
+        return $this->hasOneThrough(ProductVariants::class, OrderItems::class);
+    }
+ 
 }

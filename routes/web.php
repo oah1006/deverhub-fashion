@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OrderItemController;
 use App\Http\Controllers\auth\LoginController as CustomerLoginController;
 use App\Http\Controllers\admin\auth\LoginController as AdminLoginController;
 
@@ -70,17 +71,17 @@ Route::prefix('/admin')->name('admin.')->group(function() {
         Route::get('/logout', 'logout')->name('logout');
     });
 
-    Route::resource('users', UserController::class);
+    Route::resources([
+        'users' => UserController::class,
+        'catalogs' => CatalogController::class,
+        'products' => ProductController::class,
+        'orders' => OrderController::class,
+        'orders.items' => OrderItemController::class
+    ]);
     
-    Route::resource('catalogs', CatalogController::class);
-
-    Route::resource('products', ProductController::class);
     Route::name('products.')->controller(ProductController::class)->group(function() {
         Route::get('products/productVariant/{id}', 'destroyVariant')->name('destroyVariant');
     });
-
-    Route::resource('orders', OrderController::class);
-    
 });
 
 

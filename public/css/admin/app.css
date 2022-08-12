@@ -594,10 +594,6 @@ video {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
-.mx-44 {
-  margin-left: 11rem;
-  margin-right: 11rem;
-}
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1142,13 +1138,13 @@ video {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
-.px-8 {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 .pl-10 {
   padding-left: 2.5rem;
